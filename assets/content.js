@@ -43,7 +43,7 @@ const SITE_DATA = {
   links: {
     github: "https://github.com/marcmassa",
     kofi: "https://ko-fi.com/marcmassa",
-    linkedin: null, // TODO(marc): add LinkedIn profile URL
+    linkedin: "https://www.linkedin.com/in/marc-massa-capo",
     cv: null        // TODO(marc): add a link to a public-safe CV copy placed inside portfolio/ — never link directly to ../marc/
   }
 };
