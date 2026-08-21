@@ -25,3 +25,11 @@ and git-tracked.
 5. **Before every commit**, mentally re-run R2/R5.5 from
    `CV/specs/portfolio-site/requirements.md`: does this commit contain anything
    private, or anything copied verbatim from `marc/`/`mama/`? If unsure, don't commit.
+6. **Accessibility of information is a standing priority (added 2026-08-21).**
+   The interactive graph (Cytoscape.js, canvas-rendered) is not natively
+   reachable by screen readers or keyboard-only users — every piece of content
+   the graph can show MUST also exist in a real, semantic, keyboard-navigable
+   HTML fallback (see R10 in `requirements.md`). When adding a new graph node
+   or detail panel field, add it to the fallback list in the same change, not
+   as a follow-up. Motion/animation additions (panel transitions, node
+   feedback) MUST respect `prefers-reduced-motion`.

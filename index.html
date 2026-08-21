@@ -4,91 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marc Massa Capó</title>
-<meta name="description" content="Marc Massa Capó — DevOps Engineer transitioning into AI Platform & Agent Systems Architecture.">
+<meta name="description" content="Marc Massa Capó — DevOps Engineer transitioning into AI Platform & Agent Systems Architecture. Interactive portfolio.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<header id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="wrap">
-    <img class="avatar" src="assets/memoji.png" alt="Marc Massa Capó">
-    <div class="copy">
-      <h1 id="name"></h1>
-      <div class="tagline" id="tagline"></div>
-      <div class="location" id="location"></div>
-      <p class="intro" id="intro"></p>
-    </div>
-  </div>
+<a class="skip-link" href="#accessible-content">Skip the interactive graph — go straight to a plain-text version of this content</a>
+
+<header id="site-header">
+  <span class="brand">Marc Massa Capó</span>
+  <span class="hint">Hover a node for a preview · click to open</span>
 </header>
 
-<main class="wrap">
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid" id="project-grid"></div>
-  </section>
+<div id="cy" role="img" aria-label="Interactive mind-map of Marc's projects and skills. This graph is decorative navigation — all its content is also available in plain text below."></div>
+<div id="tooltip" class="tooltip" aria-hidden="true"></div>
 
-  <section id="skills">
-    <h2>Stack</h2>
-    <div class="skill-row" id="skill-row"></div>
-  </section>
+<aside id="panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+  <button id="panel-close" class="panel-close" aria-label="Close">✕</button>
+  <div id="panel-body"></div>
+</aside>
+
+<!-- R10: real, semantic, keyboard/screen-reader accessible fallback — every graph node's content, in plain HTML -->
+<main id="accessible-content">
+  <h1 class="visually-hidden">Marc Massa Capó — full content (accessible version of the graph above)</h1>
 </main>
 
-<footer>
-  <div class="wrap link-row" id="link-row"></div>
-</footer>
-
-<script src="assets/content.js"></script>
-<script src="assets/node-graph.js"></script>
-<script>
-  document.getElementById('name').textContent = SITE_DATA.name;
-  document.getElementById('tagline').textContent = SITE_DATA.tagline;
-  document.getElementById('location').textContent = SITE_DATA.location;
-  document.getElementById('intro').textContent = SITE_DATA.intro;
-
-  const grid = document.getElementById('project-grid');
-  SITE_DATA.projects.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.innerHTML = `
-      <h3>${p.name}</h3>
-      <div class="role">${p.role}</div>
-      <p>${p.description}</p>
-      <div class="stack mono">${p.stack}</div>
-      ${p.metric ? `<div class="metric">${p.metric}</div>` : ''}
-      ${p.link ? `<a class="card-link" href="${p.link}" target="_blank" rel="noopener">View →</a>` : ''}
-    `;
-    grid.appendChild(card);
-  });
-
-  const skillRow = document.getElementById('skill-row');
-  SITE_DATA.skills.forEach(s => {
-    const chip = document.createElement('span');
-    chip.className = 'skill-chip';
-    chip.textContent = s;
-    skillRow.appendChild(chip);
-  });
-
-  const linkRow = document.getElementById('link-row');
-  const linkLabels = { github: 'GitHub', kofi: 'Ko-fi', linkedin: 'LinkedIn', cv: 'CV' };
-  Object.keys(linkLabels).forEach(key => {
-    const url = SITE_DATA.links[key];
-    const a = document.createElement('a');
-    a.textContent = linkLabels[key];
-    if (url) {
-      a.href = url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-    } else {
-      a.href = '#';
-      a.setAttribute('data-missing', 'true');
-      a.title = 'Coming soon';
-    }
-    linkRow.appendChild(a);
-  });
-
-  renderNodeGraph('hero-canvas', { width: window.innerWidth, height: document.getElementById('hero').offsetHeight || 400 });
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.34.0/cytoscape.min.js"></script>
+<script src="assets/graph-data.js"></script>
+<script src="assets/accessible-content.js"></script>
+<script src="assets/graph.js"></script>
 
 </body>
 </html>
