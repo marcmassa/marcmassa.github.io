@@ -19,10 +19,12 @@
 <div id="cy" role="img" aria-label="Interactive mind-map of Marc's projects and skills. This graph is decorative navigation — all its content is also available in plain text below."></div>
 <div id="tooltip" class="tooltip" aria-hidden="true"></div>
 
-<aside id="panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
-  <button id="panel-close" class="panel-close" aria-label="Close">✕</button>
-  <div id="panel-body"></div>
-</aside>
+<!-- R9.5: card anchored to the clicked node itself, not a decoupled side panel -->
+<div id="node-card" class="node-card" role="dialog" aria-modal="true" aria-labelledby="card-title">
+  <button id="node-card-close" class="node-card-close" aria-label="Close">✕</button>
+  <div id="node-card-body"></div>
+</div>
+<div id="card-backdrop" class="card-backdrop"></div>
 
 <!-- R10: real, semantic, keyboard/screen-reader accessible fallback — every graph node's content, in plain HTML -->
 <main id="accessible-content">

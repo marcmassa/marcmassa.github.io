@@ -85,59 +85,73 @@ body {
 }
 .tooltip strong { color: var(--ink); display: block; margin-bottom: 2px; }
 
-/* Detail panel — slide-in overlay (R9.9: smooth, reduced-motion aware) */
-.panel {
+/* R9.5: card anchored to the clicked node — grows from the node's own screen
+   position, rather than a decoupled side panel. R9.9: smooth, reduced-motion aware. */
+.card-backdrop {
   position: fixed;
-  top: 0;
-  right: 0;
-  width: min(420px, 100%);
-  height: 100%;
+  inset: 0;
+  background: rgba(6, 9, 16, 0);
+  pointer-events: none;
+  transition: background 220ms ease;
+  z-index: 25;
+}
+.card-backdrop.open { background: rgba(6, 9, 16, 0.45); pointer-events: auto; }
+
+.node-card {
+  position: fixed;
+  width: min(360px, calc(100vw - 32px));
   background: var(--surface);
-  border-left: 1px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   box-shadow: var(--shadow);
-  padding: 28px 26px;
+  padding: 22px 22px 20px;
   overflow-y: auto;
-  transform: translateX(100%);
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 220ms ease;
   z-index: 30;
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: var(--origin-x, 50%) var(--origin-y, 0%);
+  transform: scale(0.15);
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease;
 }
-.panel.open {
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-}
+.node-card.open { visibility: visible; opacity: 1; transform: scale(1); }
 @media (prefers-reduced-motion: reduce) {
-  .panel { transition: opacity 120ms linear; transform: none; }
+  .node-card { transition: opacity 120ms linear; transform: none !important; }
+  .card-backdrop { transition: none; }
 }
-.panel h2 {
+
+.node-card h2 {
   font-family: Georgia, "Iowan Old Style", serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 22px;
   margin: 0 0 8px;
   color: var(--ink);
 }
-.panel .teaser { color: var(--amber); font-size: 14.5px; margin: 0 0 16px; }
-.panel p { color: var(--ink-soft); font-size: 15px; }
-.panel .meta { color: var(--ink-faint); font-size: 13px; margin-top: 14px; }
-.panel .metric { color: var(--amber); font-weight: 600; font-size: 14px; margin-top: 10px; }
-.panel .panel-link { display: inline-block; margin-top: 18px; color: var(--teal); text-decoration: none; font-size: 14px; }
-.panel .panel-link:hover { text-decoration: underline; }
+.node-card .teaser { color: var(--amber); font-size: 14px; margin: 0 0 14px; }
+.node-card p { color: var(--ink-soft); font-size: 14.5px; }
+.node-card .meta { color: var(--ink-faint); font-size: 12.5px; margin-top: 12px; }
+.node-card .metric { color: var(--amber); font-weight: 600; font-size: 13.5px; margin-top: 8px; }
+.node-card .card-links { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+.node-card .card-link { display: inline-block; color: var(--teal); text-decoration: none; font-size: 13.5px; }
+.node-card .card-link:hover { text-decoration: underline; }
+.node-card .job { margin-bottom: 14px; }
+.node-card .job-role { color: var(--ink); font-weight: 600; font-size: 14.5px; }
+.node-card .job-meta { color: var(--ink-faint); font-size: 12px; margin: 2px 0 6px; }
+.node-card .job ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 13.5px; }
+.node-card .job li { margin-bottom: 3px; }
 .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; }
 
-.panel-close {
+.node-card-close {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 14px;
+  right: 14px;
   background: none;
   border: none;
   color: var(--ink-faint);
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   line-height: 1;
 }
-.panel-close:hover { color: var(--ink); }
+.node-card-close:hover { color: var(--ink); }
 
 /* Accessibility (R10) */
 .skip-link {
@@ -187,6 +201,10 @@ body {
 #accessible-content .metric { color: var(--amber); font-weight: 600; font-size: 13.5px; }
 #accessible-content a { color: var(--teal); }
 #accessible-content ul { color: var(--ink-soft); font-size: 14px; padding-left: 20px; }
+#accessible-content .intro { font-size: 16px; color: var(--ink); padding: 24px 0 8px; }
+#accessible-content .sub-entry { margin: 14px 0 14px 18px; padding-left: 14px; border-left: 2px solid var(--border); }
+#accessible-content .job { margin: 10px 0 16px; }
+#accessible-content .job-role { color: var(--ink); font-weight: 600; font-size: 15px; margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
