@@ -17,11 +17,18 @@
     <span class="role">Senior DevOps Engineer <span class="role-next">→ Sr. AI Automation Engineer <em>(in progress)</em></span></span>
     <p class="intro">Palma de Mallorca · Remote. Building the infrastructure that lets AI agents run in production, not just demos.</p>
   </div>
+  <div class="view-tabs" role="tablist" aria-label="View mode">
+    <button role="tab" id="tab-graph" aria-selected="true" aria-controls="graph-panel" class="view-tab active">Graph</button>
+    <button role="tab" id="tab-list" aria-selected="false" aria-controls="accessible-content" tabindex="-1" class="view-tab">List</button>
+  </div>
   <span class="hint">Hover a node for a preview · click to open</span>
 </header>
 
-<div id="cy" role="img" aria-label="Interactive mind-map of Marc's projects and skills. This graph is decorative navigation — all its content is also available in plain text below."></div>
-<div id="tooltip" class="tooltip" aria-hidden="true"></div>
+<div id="graph-panel" role="tabpanel" aria-labelledby="tab-graph">
+  <div id="cy" role="img" aria-label="Interactive mind-map of Marc's projects and skills. This graph is decorative navigation — all its content is also available in the List view."></div>
+  <div id="node-icons-layer" aria-hidden="true"></div>
+  <div id="tooltip" class="tooltip" aria-hidden="true"></div>
+</div>
 
 <!-- R9.5 (revised): clicking a node opens a centered focus view, with connected
      nodes as side options for continuity/drill-down, instead of a small anchored card. -->
@@ -35,10 +42,42 @@
   </div>
 </div>
 
-<!-- R10: real, semantic, keyboard/screen-reader accessible fallback — every graph node's content, in plain HTML -->
-<main id="accessible-content">
-  <h1 class="visually-hidden">Marc Massa Capó — full content (accessible version of the graph above)</h1>
+<!-- R10 (revised 2026-08-22): a real ARIA tabpanel now, not just a scroll-past fallback —
+     reachable via the Graph/List tabs above, so switching views needs no scrolling. -->
+<main id="accessible-content" role="tabpanel" aria-labelledby="tab-list" hidden>
+  <h1 class="visually-hidden">Marc Massa Capó — full content (list view)</h1>
 </main>
+
+<script>
+(function(){
+  var tabGraph = document.getElementById('tab-graph');
+  var tabList = document.getElementById('tab-list');
+  var graphPanel = document.getElementById('graph-panel');
+  var listPanel = document.getElementById('accessible-content');
+  function show(which) {
+    var toGraph = which === 'graph';
+    tabGraph.setAttribute('aria-selected', String(toGraph));
+    tabList.setAttribute('aria-selected', String(!toGraph));
+    tabGraph.tabIndex = toGraph ? 0 : -1;
+    tabList.tabIndex = toGraph ? -1 : 0;
+    tabGraph.classList.toggle('active', toGraph);
+    tabList.classList.toggle('active', !toGraph);
+    graphPanel.hidden = !toGraph;
+    listPanel.hidden = toGraph;
+    if (toGraph) document.dispatchEvent(new CustomEvent('graph-panel-shown'));
+  }
+  tabGraph.addEventListener('click', function(){ show('graph'); });
+  tabList.addEventListener('click', function(){ show('list'); });
+  [tabGraph, tabList].forEach(function(tab, i, arr){
+    tab.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        arr[i === 0 ? 1 : 0].focus();
+        show(i === 0 ? 'list' : 'graph');
+      }
+    });
+  });
+})();
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.34.0/cytoscape.min.js"></script>
 <script src="assets/graph-data.js"></script>

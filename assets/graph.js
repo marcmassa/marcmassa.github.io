@@ -43,20 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
             'label': 'data(label)', 'color': '#ADB5C4',
             'font-family': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             'font-size': 11, 'text-valign': 'bottom', 'text-margin-y': 6, 'text-outline-width': 0,
-            'background-fit': 'cover', 'border-width': 2,
+            'border-width': 2,
             'transition-property': 'opacity, border-width', 'transition-duration': 150
         }},
         { selector: 'node[kind = "hub"]', style: {
-            'width': 92, 'height': 92, 'background-image': 'data(image)',
+            'width': 92, 'height': 92,
             'background-color': '#12314a', 'border-color': '#c98500',
             'font-size': 15, 'color': '#ECEAE3', 'font-family': 'Georgia, serif'
         }},
         { selector: 'node[kind = "primary"]', style: {
-            'width': 58, 'height': 58, 'background-image': 'data(image)',
+            'width': 58, 'height': 58,
             'background-color': '#12314a', 'border-color': '#199e70', 'color': '#ECEAE3', 'font-weight': 'bold'
         }},
         { selector: 'node[kind = "secondary"]', style: {
-            'width': 44, 'height': 44, 'background-image': 'data(image)',
+            'width': 44, 'height': 44,
             'background-color': '#12314a', 'border-color': '#c98500', 'color': '#ECEAE3'
         }},
         { selector: 'node[?flagship]', style: { 'width': 56, 'height': 56, 'border-width': 3 } },
@@ -71,8 +71,38 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
       layout: { name: 'cose', animate: !reduceMotion, idealEdgeLength: 75, nodeRepulsion: 9500, padding: 40 }
     });
+    setupIconLayer();
     wireInteraction();
   });
+
+  function setupIconLayer() {
+    const layer = document.getElementById('node-icons-layer');
+    const imgEls = {};
+    cy.nodes().forEach(n => {
+      const src = n.data('image');
+      if (!src) return;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      layer.appendChild(img);
+      imgEls[n.id()] = img;
+    });
+    function sync() {
+      Object.keys(imgEls).forEach(id => {
+        const n = cy.getElementById(id);
+        const img = imgEls[id];
+        const pos = n.renderedPosition();
+        const size = n.renderedWidth() * 0.72; // inset so the node's border ring stays visible
+        img.style.left = pos.x + 'px';
+        img.style.top = pos.y + 'px';
+        img.style.width = size + 'px';
+        img.style.height = size + 'px';
+        img.style.opacity = n.hasClass('dim') ? 0.15 : 1;
+      });
+    }
+    cy.on('render', sync);
+    sync();
+  }
 
   function wireInteraction() {
     const tooltip = document.getElementById('tooltip');
@@ -229,5 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     window.addEventListener('resize', () => { if (cy) cy.resize(); });
+    // R10: the graph panel can be hidden/shown via the Graph/List tabs — Cytoscape
+    // needs an explicit resize+fit when its container goes from display:none back to visible.
+    document.addEventListener('graph-panel-shown', () => { if (cy) { cy.resize(); cy.fit(undefined, 30); } });
   }
 });
