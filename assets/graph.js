@@ -88,11 +88,21 @@ document.addEventListener('DOMContentLoaded', function () {
               if (a === 'primary' || b === 'primary') return 130;
               return 60;
             },
-            nodeSpacing: 22, padding: 60, randomize: false, fit: true,
+            nodeSpacing: 22, padding: 60, randomize: false,
+            // fit:false is deliberate — with infinite:true, cola re-fits the
+            // viewport on every simulation tick, fighting any manual zoom the
+            // user tries to do (reported 2026-08-22: "tries to zoom but can't").
+            // We fit once, manually, below instead.
+            fit: false,
             unconstrIter: 20, userConstIter: 20, allConstIter: 20
           }
         : { name: 'cose', animate: !reduceMotion, idealEdgeLength: 90, nodeRepulsion: 12000, padding: 60 }
     });
+    // One-time initial fit only — let the user's own zoom/pan take over after
+    // the layout has had a moment to settle from its starting positions.
+    if (colaAvailable && !reduceMotion) {
+      setTimeout(() => cy.fit(undefined, 50), 900);
+    }
     setupIconLayer();
     wireInteraction();
   });
