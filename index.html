@@ -17,11 +17,14 @@
     <span class="role">Senior DevOps Engineer <span class="role-next">→ Sr. AI Automation Engineer <em>(in progress)</em></span></span>
     <p class="intro">Palma de Mallorca · Remote. Building the infrastructure that lets AI agents run in production, not just demos.</p>
   </div>
-  <div class="view-tabs" role="tablist" aria-label="View mode">
-    <button role="tab" id="tab-graph" aria-selected="true" aria-controls="graph-panel" class="view-tab active">Graph</button>
-    <button role="tab" id="tab-list" aria-selected="false" aria-controls="accessible-content" tabindex="-1" class="view-tab">List</button>
+  <div class="header-right">
+    <span class="hint">Hover a node for a preview · click to open</span>
+    <div class="view-tabs" role="tablist" aria-label="View mode">
+      <span class="view-tabs-glow" aria-hidden="true"></span>
+      <button role="tab" id="tab-graph" aria-selected="true" aria-controls="graph-panel" class="view-tab active">Graph</button>
+      <button role="tab" id="tab-list" aria-selected="false" aria-controls="accessible-content" tabindex="-1" class="view-tab">List</button>
+    </div>
   </div>
-  <span class="hint">Hover a node for a preview · click to open</span>
 </header>
 
 <div id="graph-panel" role="tabpanel" aria-labelledby="tab-graph">
@@ -52,8 +55,25 @@
 (function(){
   var tabGraph = document.getElementById('tab-graph');
   var tabList = document.getElementById('tab-list');
+  var glow = document.querySelector('.view-tabs-glow');
   var graphPanel = document.getElementById('graph-panel');
   var listPanel = document.getElementById('accessible-content');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TRANSITION_MS = reduceMotion ? 0 : 260;
+
+  function moveGlow(toGraph) {
+    var target = toGraph ? tabGraph : tabList;
+    glow.style.width = target.offsetWidth + 'px';
+    glow.style.left = target.offsetLeft + 'px';
+  }
+  // "Liquid glass" press feedback on the sliding indicator itself.
+  function pulseGlow() {
+    if (reduceMotion) return;
+    glow.classList.remove('pulse');
+    void glow.offsetWidth; // restart the animation
+    glow.classList.add('pulse');
+  }
+
   function show(which) {
     var toGraph = which === 'graph';
     tabGraph.setAttribute('aria-selected', String(toGraph));
@@ -62,9 +82,24 @@
     tabList.tabIndex = toGraph ? -1 : 0;
     tabGraph.classList.toggle('active', toGraph);
     tabList.classList.toggle('active', !toGraph);
-    graphPanel.hidden = !toGraph;
-    listPanel.hidden = toGraph;
-    if (toGraph) document.dispatchEvent(new CustomEvent('graph-panel-shown'));
+    moveGlow(toGraph);
+    pulseGlow();
+
+    var showEl = toGraph ? graphPanel : listPanel;
+    var hideEl = toGraph ? listPanel : graphPanel;
+    if (showEl.hidden) {
+      showEl.hidden = false;
+      showEl.classList.add('view-fade-in');
+      // force layout so the browser registers the starting state before we animate
+      void showEl.offsetWidth;
+      requestAnimationFrame(function(){ showEl.classList.remove('view-fade-in'); });
+    }
+    hideEl.classList.add('view-fade-out');
+    setTimeout(function(){
+      hideEl.hidden = true;
+      hideEl.classList.remove('view-fade-out');
+      if (toGraph) document.dispatchEvent(new CustomEvent('graph-panel-shown'));
+    }, TRANSITION_MS);
   }
   tabGraph.addEventListener('click', function(){ show('graph'); });
   tabList.addEventListener('click', function(){ show('list'); });
@@ -76,6 +111,8 @@
       }
     });
   });
+  window.addEventListener('resize', function(){ moveGlow(!graphPanel.hidden); });
+  moveGlow(true);
 })();
 </script>
 

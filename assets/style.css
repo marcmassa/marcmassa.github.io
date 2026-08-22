@@ -105,16 +105,47 @@ body {
   border-radius: 50%;
 }
 
-/* View tabs — R10: switch Graph/List without scrolling */
+/* View tabs — R10: switch Graph/List without scrolling. Pushed to the far right
+   of the header (Marc's request 2026-08-22), "liquid glass" sliding indicator. */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
 .view-tabs {
+  position: relative;
   display: flex;
   gap: 2px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(18, 26, 44, 0.5);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 100px;
   padding: 3px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 14px rgba(0,0,0,0.25);
+}
+.view-tabs-glow {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  border-radius: 100px;
+  background: linear-gradient(180deg, rgba(224,169,74,0.95), rgba(201,133,0,0.9));
+  box-shadow: 0 2px 8px rgba(201,133,0,0.45), inset 0 1px 1px rgba(255,255,255,0.4);
+  transition: left 320ms cubic-bezier(.34,1.4,.4,1), width 320ms cubic-bezier(.34,1.4,.4,1);
+  pointer-events: none;
+  z-index: 0;
+}
+.view-tabs-glow.pulse { animation: glow-pulse 420ms cubic-bezier(.34,1.4,.4,1); }
+@keyframes glow-pulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08, 0.88); }
+  100% { transform: scale(1); }
 }
 .view-tab {
+  position: relative;
+  z-index: 1;
   background: none;
   border: none;
   border-radius: 100px;
@@ -122,10 +153,26 @@ body {
   font-size: 12.5px;
   color: var(--ink-faint);
   cursor: pointer;
+  transition: color 200ms ease;
 }
-.view-tab.active { background: var(--amber); color: #0A1120; font-weight: 600; }
+.view-tab.active { color: #0A1120; font-weight: 600; }
 .view-tab:not(.active):hover { color: var(--ink); }
 .view-tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .view-tabs-glow { transition: none; }
+}
+
+/* Graph/List cross-fade (R9.9) */
+#graph-panel, #accessible-content {
+  opacity: 1;
+  transition: opacity 260ms ease;
+}
+.view-fade-in { opacity: 0 !important; }
+.view-fade-out { opacity: 0 !important; }
+@media (prefers-reduced-motion: reduce) {
+  #graph-panel, #accessible-content { transition: none; }
+}
 
 #accessible-content[hidden], #graph-panel[hidden] { display: none; }
 
@@ -283,6 +330,27 @@ body {
 .focus-card .card-links { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
 .focus-card .card-link { display: inline-block; color: var(--teal); text-decoration: none; font-size: 13.5px; }
 .focus-card .card-link:hover { text-decoration: underline; }
+.focus-card .skills-list, #accessible-content .skills-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.focus-card .skills-list li, #accessible-content .skills-list li {
+  font-size: 13px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--border);
+  padding-left: 10px;
+}
+.focus-card .skills-list strong, #accessible-content .skills-list strong {
+  display: block;
+  color: var(--ink);
+  font-size: 13.5px;
+  margin-bottom: 1px;
+}
+.focus-card .skills-list span { display: block; }
 .focus-card .job { margin-bottom: 14px; }
 .focus-card .job-role { color: var(--ink); font-weight: 600; font-size: 14.5px; }
 .focus-card .job-meta { color: var(--ink-faint); font-size: 12px; margin: 2px 0 6px; }

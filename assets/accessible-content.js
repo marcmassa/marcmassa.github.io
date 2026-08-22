@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       html += '<p>' + n.detail.body + '</p>';
     }
+    if (n.detail.skillsList) {
+      html += '<ul class="skills-list">' + n.detail.skillsList.map(s =>
+        '<li><strong>' + s.name + '</strong> — ' + s.note + '</li>'
+      ).join('') + '</ul>';
+    }
     if (n.detail.stack) html += '<p class="mono meta">' + n.detail.stack + '</p>';
     if (n.detail.metric) html += '<p class="metric">' + n.detail.metric + '</p>';
     if (n.detail.links) {
@@ -45,8 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
       section.appendChild(sub);
     });
 
-    // Leaves directly under this primary (skills, contact links)
-    const leaves = GRAPH.nodes.filter(l => l.parent === n.id);
+    // Leaves directly under this primary (contact links) — skipped for Skills,
+    // whose leaves are already covered by the richer skillsList above.
+    const leaves = n.detail.skillsList ? [] : GRAPH.nodes.filter(l => l.parent === n.id);
     if (leaves.length) {
       const ul = document.createElement('ul');
       ul.innerHTML = leaves.map(l => l.kind === 'link'

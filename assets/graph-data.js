@@ -25,7 +25,21 @@ const GRAPH = {
       detail: { title: 'Projects', teaser: 'SecurIT, Hypermove, Harness Dashboard', body: 'Click a connected node to see each project in depth.' } },
 
     { id: 'skills', label: 'Skills', kind: 'primary', image: 'assets/icons/skills.svg',
-      detail: { title: 'Skills', teaser: 'Stack across cloud, AI infra, and automation', body: 'Click a connected node to see the full stack.' } },
+      detail: { title: 'Skills', teaser: 'Stack across cloud, AI infra, and automation',
+        body: 'Real hands-on tools, not just certifications — and how each one shows up in my day-to-day work.',
+        skillsList: [
+          { name: 'GKE', note: 'Operating production workloads on Google Kubernetes Engine' },
+          { name: 'Vertex AI', note: 'Building and serving AI/ML workloads on Google Cloud\'s AI platform' },
+          { name: 'Gemini Enterprise', note: 'Agent orchestration & enterprise search — Vertex AI\'s current branding post Cloud Next 2026' },
+          { name: 'Kubernetes', note: 'Container orchestration across cloud and on-prem environments' },
+          { name: 'Terraform', note: 'Infrastructure as code for reproducible cloud provisioning' },
+          { name: 'Azure', note: 'Cloud infrastructure and services on Microsoft Azure' },
+          { name: 'OpenShift', note: 'Enterprise Kubernetes — used at RIU Hotels to containerize critical services (+50% resilience)' },
+          { name: 'n8n', note: 'Workflow automation, from deterministic pipelines to agent-assisted flows' },
+          { name: 'MCP', note: 'Model Context Protocol — connecting AI agents to real tools and data' },
+          { name: 'CI/CD', note: 'Pipeline automation (Jenkins/GitLab) — cut GCP Cloud Run costs by 30% at Indra' },
+          { name: 'Jira', note: 'Daily ticketing and workflow tracking across teams' }
+        ] } },
 
     { id: 'contact', label: 'Contact', kind: 'primary', image: 'assets/icons/contact.svg',
       detail: { title: 'Contact', teaser: 'GitHub, Ko-fi, LinkedIn', body: 'Connected nodes open directly — no detail panel for pure links.' } },

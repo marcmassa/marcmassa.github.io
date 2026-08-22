@@ -137,6 +137,11 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         html += '<p>' + d.detail.body + '</p>';
       }
+      if (d.detail.skillsList) {
+        html += '<ul class="skills-list">' + d.detail.skillsList.map(s =>
+          '<li><strong>' + s.name + '</strong><span>' + s.note + '</span></li>'
+        ).join('') + '</ul>';
+      }
       if (d.detail.stack) html += '<div class="meta mono">' + d.detail.stack + '</div>';
       if (d.detail.metric) html += '<div class="metric">' + d.detail.metric + '</div>';
       if (d.detail.links) {
@@ -147,12 +152,13 @@ document.addEventListener('DOMContentLoaded', function () {
       return html;
     }
 
-    function sideChip(node, extraClass, label) {
+    function sideChip(node, extraClass, label, onBack) {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'side-chip' + (extraClass ? ' ' + extraClass : '');
       btn.textContent = label || node.label;
       btn.addEventListener('click', () => {
+        if (onBack) { goBack(); return; }
         if (node.kind === 'link' && node.url) { window.open(node.url, '_blank', 'noopener'); return; }
         if (node.detail) navigateTo(node.id);
       });
@@ -189,11 +195,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       sideLeft.innerHTML = '';
       const parent = parentOf(id);
-      if (parent && parent.detail) {
+      // Only offer "Back to" when that parent is actually the previous breadcrumb
+      // entry — i.e. we can really pop, not push a duplicate (fixes the
+      // ever-growing breadcrumb reported 2026-08-22).
+      if (parent && stack.length > 1 && stack[stack.length - 2] === parent.id) {
         const label = document.createElement('div');
         label.className = 'side-label'; label.textContent = 'Back to';
         sideLeft.appendChild(label);
-        sideLeft.appendChild(sideChip(parent, 'back', '← ' + parent.label));
+        sideLeft.appendChild(sideChip(parent, 'back', '← ' + parent.label, true));
       }
 
       sideRight.innerHTML = '';
@@ -209,6 +218,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function navigateTo(id) {
       stack.push(id);
       render();
+    }
+    function goBack() {
+      if (stack.length > 1) { stack.pop(); render(); }
     }
 
     function openFocus(nodeId, evt) {
