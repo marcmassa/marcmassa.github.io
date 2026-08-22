@@ -27,6 +27,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }));
   GRAPH.edges.forEach(e => elements.push({ data: { source: e.source, target: e.target } }));
 
+  // R9 (2026-08-22 feedback): continuous physics — nodes float, are draggable,
+  // and avoid overlapping each other. Core `cose` only settles once, so this
+  // needs the cola extension (webcola + cytoscape-cola, both CDN-loaded).
+  const colaAvailable = typeof cytoscapeCola !== 'undefined' && typeof cytoscape !== 'undefined';
+  if (colaAvailable) {
+    try { cytoscape.use(cytoscapeCola); } catch (e) { /* already registered */ }
+  }
+
   let cy;
   whenImagesReady(() => {
     cy = cytoscape({
@@ -69,7 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
         { selector: '.dim', style: { 'opacity': 0.15 } },
         { selector: '.highlight', style: { 'border-width': 4, 'opacity': 1 } }
       ],
-      layout: { name: 'cose', animate: !reduceMotion, idealEdgeLength: 75, nodeRepulsion: 9500, padding: 40 }
+      layout: (colaAvailable && !reduceMotion)
+        ? { name: 'cola', animate: true, infinite: true, avoidOverlap: true,
+            edgeLength: 80, nodeSpacing: 8, padding: 40, randomize: false, fit: true }
+        : { name: 'cose', animate: !reduceMotion, idealEdgeLength: 75, nodeRepulsion: 9500, padding: 40 }
     });
     setupIconLayer();
     wireInteraction();
@@ -136,6 +147,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       } else {
         html += '<p>' + d.detail.body + '</p>';
+      }
+      if (d.detail.diagrams) {
+        html += d.detail.diagrams.map(dg =>
+          '<figure class="card-diagram-fig"><img class="card-diagram" src="' + dg.src + '" alt="' + dg.caption + '" loading="lazy">' +
+          '<figcaption>' + dg.caption + '</figcaption></figure>'
+        ).join('');
       }
       function skillGroup(label, list) {
         if (!list) return '';

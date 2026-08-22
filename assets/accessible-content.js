@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       html += '<p>' + n.detail.body + '</p>';
     }
+    if (n.detail.diagrams) {
+      html += n.detail.diagrams.map(dg =>
+        '<figure class="card-diagram-fig"><img class="card-diagram" src="' + dg.src + '" alt="' + dg.caption + '" loading="lazy">' +
+        '<figcaption>' + dg.caption + '</figcaption></figure>'
+      ).join('');
+    }
     function skillGroup(label, list) {
       if (!list) return '';
       return '<p class="mono meta" style="margin-top:12px;">' + label + '</p><ul class="skills-list">' +

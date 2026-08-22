@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="900" height="240" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif">
+  <text x="20" y="28" fill="#ECEAE3" font-size="15" font-weight="700">Harness Engineering — four pillars</text>
+  <text x="20" y="48" fill="#6E7887" font-size="11.5">A methodology for structuring a repo so AI agents can work in it autonomously, traceably, and verifiably.</text>
+
+  <!-- pillar 1 -->
+  <rect x="20" y="70" width="200" height="150" rx="10" fill="#12314a" stroke="#199e70" stroke-width="1.5"/>
+  <circle cx="45" cy="95" r="9" fill="none" stroke="#199e70" stroke-width="2"/>
+  <path d="M41 95l3 3 6-6" stroke="#199e70" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="62" y="99" fill="#ECEAE3" font-size="12.5" font-weight="700">The repo IS the system</text>
+  <text x="35" y="122" fill="#ADB5C4" font-size="10.5">All context an agent needs</text>
+  <text x="35" y="137" fill="#ADB5C4" font-size="10.5">lives on disk — not in a</text>
+  <text x="35" y="152" fill="#ADB5C4" font-size="10.5">person's head or a chat log.</text>
+  <text x="35" y="175" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">AGENTS.md</text>
+  <text x="35" y="190" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">feature_list.json</text>
+  <text x="35" y="205" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">specs/ · progress/ · docs/</text>
+
+  <!-- pillar 2 -->
+  <rect x="240" y="70" width="200" height="150" rx="10" fill="#3a2a10" stroke="#c98500" stroke-width="1.5"/>
+  <circle cx="265" cy="95" r="9" fill="none" stroke="#c98500" stroke-width="2"/>
+  <path d="M261 95h8M265 91v8" stroke="#c98500" stroke-width="2" stroke-linecap="round"/>
+  <text x="282" y="99" fill="#ECEAE3" font-size="12.5" font-weight="700">Spec-driven development</text>
+  <text x="255" y="122" fill="#ADB5C4" font-size="10.5">No code is written until</text>
+  <text x="255" y="137" fill="#ADB5C4" font-size="10.5">requirements, design, and a</text>
+  <text x="255" y="152" fill="#ADB5C4" font-size="10.5">human approve it.</text>
+  <text x="255" y="175" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">requirements.md (EARS)</text>
+  <text x="255" y="190" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">design.md · tasks.md</text>
+  <text x="255" y="205" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">R&lt;n&gt; ↔ test traceability</text>
+
+  <!-- pillar 3 -->
+  <rect x="460" y="70" width="200" height="150" rx="10" fill="#12314a" stroke="#199e70" stroke-width="1.5"/>
+  <circle cx="485" cy="95" r="9" fill="none" stroke="#199e70" stroke-width="2"/>
+  <path d="M481 91v8M485 91v8M489 91v8" stroke="#199e70" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="502" y="99" fill="#ECEAE3" font-size="12.5" font-weight="700">Operational memory</text>
+  <text x="475" y="122" fill="#ADB5C4" font-size="10.5">Session state, decisions, and</text>
+  <text x="475" y="137" fill="#ADB5C4" font-size="10.5">backlog live in files, not in</text>
+  <text x="475" y="152" fill="#ADB5C4" font-size="10.5">an ephemeral chat window.</text>
+  <text x="475" y="175" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">progress/current.md</text>
+  <text x="475" y="190" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">progress/decisions.md</text>
+  <text x="475" y="205" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">progress/backlog.md</text>
+
+  <!-- pillar 4 -->
+  <rect x="680" y="70" width="200" height="150" rx="10" fill="#3a2a10" stroke="#c98500" stroke-width="1.5"/>
+  <circle cx="705" cy="95" r="9" fill="none" stroke="#c98500" stroke-width="2"/>
+  <path d="M701 96l3 3 5-7" stroke="#c98500" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="722" y="99" fill="#ECEAE3" font-size="12.5" font-weight="700">Executable verification</text>
+  <text x="695" y="122" fill="#ADB5C4" font-size="10.5">A script — not a feeling —</text>
+  <text x="695" y="137" fill="#ADB5C4" font-size="10.5">decides if a task is really</text>
+  <text x="695" y="152" fill="#ADB5C4" font-size="10.5">done.</text>
+  <text x="695" y="175" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">check.sh</text>
+  <text x="695" y="190" fill="#6E7887" font-size="9.5" font-family="ui-monospace,monospace">gate for status: done</text>
+</svg>

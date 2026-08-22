@@ -420,6 +420,21 @@ body {
 .focus-card .job-meta { color: var(--ink-faint); font-size: 12px; margin: 2px 0 6px; }
 .focus-card .job ul { margin: 0; padding-left: 18px; color: var(--ink-soft); font-size: 13.5px; }
 .focus-card .job li { margin-bottom: 3px; }
+.card-diagram-fig { margin: 16px 0; }
+.card-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+.card-diagram-fig figcaption {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 6px;
+  text-align: center;
+}
 .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; }
 
 .focus-close {

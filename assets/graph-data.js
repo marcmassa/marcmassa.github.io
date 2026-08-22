@@ -37,7 +37,7 @@ const GRAPH = {
           ] },
           { category: 'Automation & Agentic AI', items: [
             { name: 'n8n', note: 'Workflow automation, from deterministic pipelines to agent-assisted flows' },
-            { name: 'MCP', note: 'Model Context Protocol — connecting AI agents to real tools and data' }
+            { name: 'MCP', note: 'Connecting agent workflows to real tools and data via the Model Context Protocol' }
           ] },
           { category: 'Container Orchestration & IaC', items: [
             { name: 'Kubernetes', note: 'Container orchestration across cloud and on-prem environments' },
@@ -57,7 +57,11 @@ const GRAPH = {
             { name: 'Go', note: 'Hypermove\'s migration engine and backend services' }
           ] },
           { category: 'Ticketing & Task Management', items: [
-            { name: 'Jira', note: 'Daily ticketing and workflow tracking across teams' }
+            { name: 'Jira', note: 'Daily ticketing and workflow tracking across teams' },
+            { name: 'EasyVista', note: 'ITSM ticketing for infrastructure and support requests' },
+            { name: 'OpenProject', note: 'Project management and planning' },
+            { name: 'ITIL', note: 'Working within ITIL-aligned service management practices' },
+            { name: 'Agile / Kanban', note: 'Day-to-day delivery workflow across teams' }
           ] }
         ],
         softSkills: [
@@ -68,28 +72,55 @@ const GRAPH = {
         ] } },
 
     { id: 'certifications', label: 'Certifications', kind: 'primary', image: 'assets/icons/certifications.svg',
-      detail: { title: 'Certifications', teaser: 'GenAI/Agentic AI, infrastructure, and AI foundations',
-        body: 'Education: Sys. Admin and Networking (ASIR), Sant Josep Obrer.',
+      detail: { title: 'Certifications', teaser: 'Google Skills (Gold League, both profiles) + infrastructure & AI foundations',
+        body: 'Education: Sys. Admin and Networking (ASIR), Sant Josep Obrer. Every badge below is real and dated — pulled directly from my two Google Skills profiles.',
         certGroups: [
-          { category: 'GenAI & Agentic AI Specialization (2025–2026)', items: [
-            'Agent Development Kit (ADK)', 'Model Context Protocol (MCP)', 'Multi-Agent Systems & Engine',
-            'Model Armor (AI Security)', 'n8n Agent Creation', 'Nvidia NeMo Agent Toolkit'
+          { category: 'Gemini Enterprise Agent Platform — Governance & Security (2026)', items: [
+            'Govern Agent Access with Gemini Enterprise Agent Platform', 'Secure your Agents with Gemini Enterprise Agent Platform',
+            'Govern agents with Agent Gateway, Agent Registry, and Policies', 'Model Armor: Securing AI Deployments',
+            'Deploy Gemini Enterprise with Workspace Data Sources and Model Armor'
+          ] },
+          { category: 'Gemini Enterprise Agent Platform — Deployment & Search (2026)', items: [
+            'Improve Agent Search Results on Agent Platform', 'Agent Search UI configurations on Agent Platform',
+            'Deploy the Gemini Enterprise app to Transform Enterprises', 'Deploy Multi-Agent Systems with Gemini Enterprise Agent Platform',
+            'Plan Change Management for Gemini Enterprise Deployments', 'Add Agents to Gemini Enterprise',
+            'Accelerate Knowledge Exchange with Gemini Enterprise', 'Introduction to Gemini Enterprise',
+            'Create Your First Gemini Enterprise Application', 'Enterprise Agents and Use Cases'
+          ] },
+          { category: 'Agent Development Kit (ADK) & Agent Fundamentals (2026)', items: [
+            'Engineer AI Agents with Agent Development Kit (ADK)', 'Build Your First Agent with Agent Development Kit (ADK)',
+            'Build Agents with Agent Development Kit (ADK)', 'Agent Fundamentals', 'Introduction to AI Agents',
+            'Use a Third-Party Identity Provider with Workforce Identity Federation'
+          ] },
+          { category: 'Generative AI Foundations (2023)', items: [
+            'Introduction to Generative AI', 'Introduction to Large Language Models', 'Introduction to Responsible AI',
+            'Generative AI Fundamentals', 'Introduction to Vertex AI Studio', 'Introduction to Image Generation',
+            'Create Image Captioning Models', 'Transformer Models and BERT Model', 'Attention Mechanism', 'Encoder-Decoder Architecture'
+          ] },
+          { category: 'Gen AI: Navigate & Transform series (2026)', items: [
+            'Gen AI Agents: Transform Your Organization', 'Gen AI Apps: Transform Your Work',
+            'Gen AI: Navigate the Landscape', 'Gen AI: Unlock Foundational Concepts', 'Gen AI: Beyond the Chatbot'
           ] },
           { category: 'Infrastructure & Networking', items: [
-            'RHCSA (Red Hat Certified)', 'CCNA (Cisco Networking)', 'K8s for IT Admin (LinkedIn)',
-            'Compute Engine Load Balancing', 'Snyk Security for Devs', 'Security Monitoring'
+            'Implementing Cloud Load Balancing for Compute Engine', 'RHCSA (Red Hat Certified)', 'CCNA (Cisco Networking)',
+            'K8s for IT Admin (LinkedIn)', 'Snyk Security for Devs', 'Security Monitoring'
           ] },
-          { category: 'AI Foundations', items: [
+          { category: 'AI Foundations (external)', items: [
             'CS50 AI with Python — Harvard/edX (2026)', 'Orchestrating Workflows for GenAI — DeepLearning.AI',
             'Claude Code: Agentic Coding — DeepLearning.AI'
           ] }
+        ],
+        links: [
+          { label: 'Google Skills — work profile (Gold League)', url: 'https://partner.skills.google/public_profiles/233d475a-59ee-4c93-946f-c3b893ae5375' },
+          { label: 'Google Skills — personal profile (Gold League)', url: 'https://www.skills.google/public_profiles/38b79667-4fb6-4ebc-aa2c-49376698ba1a' }
         ] } },
 
     { id: 'books', label: 'Books', kind: 'primary', image: 'assets/icons/books.svg',
-      detail: { title: 'Books', teaser: 'What I\'m reading to go deeper',
-        body: 'A short, honest list — not padded out for show.',
+      detail: { title: 'Books', teaser: 'Currently reading — an ongoing list, not a finished one',
+        body: 'What I\'m actively reading right now to go deeper — a short, honest, in-progress list, not padded out for show.',
         booksList: [
-          { name: 'AI Engineering', author: 'Chip Huyen', note: 'Currently reading — practical foundations for building real AI/LLM applications' }
+          { name: 'AI Engineering', author: 'Chip Huyen', note: 'Currently reading — practical foundations for building real AI/LLM applications' },
+          { name: 'The Software Engineer\'s Guidebook', author: 'Gergely Orosz', note: 'Currently reading — navigating technical and career growth as a senior engineer' }
         ] } },
 
     { id: 'contact', label: 'Contact', kind: 'primary', image: 'assets/icons/contact.svg',
@@ -115,6 +146,21 @@ const GRAPH = {
           { label: 'Source on GitHub', url: 'https://github.com/marcmassa/harness-manager' }
         ] } },
 
+    { id: 'framework', label: 'Harness SDD Framework', kind: 'secondary', image: 'assets/icons/framework.svg',
+      detail: { title: 'Harness SDD Framework', teaser: 'The methodology this very portfolio was built with — and this is a live example of it',
+        body: 'An open-source template for structuring a repo so AI agents can work in it autonomously, traceably, and verifiably — combining four ideas: Harness Engineering (the repo IS the system — AGENTS.md, specs/, progress/ as shared memory instead of a person\'s head or a chat log), Spec-Driven Development (no code before requirements → design → tasks are written and approved), a Human-in-the-Loop gate (a human reviews and approves every spec before implementation starts — no exceptions, even when the agent disagrees), and Context Engineering (state lives on disk, not in the conversation — a new session reads one distilled file instead of re-deriving history from a growing transcript, which keeps inference cost flat instead of scaling with conversation length). It also standardizes on the emerging AGENTS.md convention for cross-CLI agent instructions, with subagents (harness/spec-author/implementer/reviewer), skills loaded via progressive disclosure, and lifecycle hooks — one manifest (`agentic.json`) rendered into whichever CLI is actually running (Claude Code, Gemini CLI, opencode). This site is a live example, not a demo: every round of feedback in this conversation became a spec update in `specs/portfolio-site/`, reviewed before I (the agent) touched the code — including a local/global steering pilot giving `marc/`, `mama/`, and `portfolio/` their own guardrails.',
+        stack: 'Bash · JSON manifest · Python renderer',
+        diagrams: [
+          { src: 'assets/diagrams/harness-engineering.svg', caption: 'Harness Engineering — the four pillars' },
+          { src: 'assets/diagrams/sdd-flow.svg', caption: 'Spec-Driven Development — the lifecycle' },
+          { src: 'assets/diagrams/hitl-gate.svg', caption: 'Human-in-the-Loop — the approval gate in detail' },
+          { src: 'assets/diagrams/context-engineering.svg', caption: 'Context engineering — why state lives on disk' },
+          { src: 'assets/diagrams/agent-architecture.svg', caption: 'AI agent standards — AGENTS.md, subagents, hooks' }
+        ],
+        links: [
+          { label: 'Harness Dashboard (companion VS Code extension)', url: 'https://open-vsx.org/extension/marcmassacapo/harness-dashboard-vscode' }
+        ] } },
+
     { id: 'kiro', label: 'Kiro Task Manager', kind: 'secondary', image: 'assets/icons/kiro.svg',
       detail: { title: 'Kiro Task Manager', teaser: 'Built during an AWS-Spain Kiro workshop but went beyond',
         body: 'Kanban-style task management web app with a Spanish-language UI — three columns (Por Hacer / En Progreso / Completadas) plus a productivity analytics dashboard. Single-package monorepo (no separate bundler config); ships its own MCP server.',
@@ -137,6 +183,10 @@ const GRAPH = {
     { id: 'skill-azuredevops', label: 'Azure DevOps', kind: 'leaf', parent: 'skills'},
     { id: 'skill-gitlabci', label: 'GitLab CI', kind: 'leaf', parent: 'skills' },
     { id: 'skill-jira', label: 'Jira', kind: 'leaf', parent: 'skills' },
+    { id: 'skill-easyvista', label: 'EasyVista', kind: 'leaf', parent: 'skills' },
+    { id: 'skill-openproject', label: 'OpenProject', kind: 'leaf', parent: 'skills' },
+    { id: 'skill-itil', label: 'ITIL', kind: 'leaf', parent: 'skills' },
+    { id: 'skill-agilekanban', label: 'Agile / Kanban', kind: 'leaf', parent: 'skills' },
     { id: 'skill-python', label: 'Python', kind: 'leaf', parent: 'skills' },
     { id: 'skill-typescript', label: 'TypeScript', kind: 'leaf', parent: 'skills' },
     { id: 'skill-go', label: 'Go', kind: 'leaf', parent: 'skills' },
@@ -153,9 +203,9 @@ const GRAPH = {
     { id: 'securit-pg', label: 'PostgreSQL', kind: 'leaf', parent: 'securit' },
 
     // Contact links
-    { id: 'link-github', label: 'GitHub', kind: 'link', parent: 'contact', url: 'https://github.com/marcmassa' },
-    { id: 'link-kofi', label: 'Ko-fi', kind: 'link', parent: 'contact', url: 'https://ko-fi.com/marcmassa' },
-    { id: 'link-linkedin', label: 'LinkedIn', kind: 'link', parent: 'contact', url: 'https://www.linkedin.com/in/marc-massa-capo' }
+    { id: 'link-github', label: 'GitHub', kind: 'link', parent: 'contact', image: 'assets/icons/github.svg', url: 'https://github.com/marcmassa' },
+    { id: 'link-kofi', label: 'Ko-fi', kind: 'link', parent: 'contact', image: 'assets/icons/kofi.svg', url: 'https://ko-fi.com/marcmassa' },
+    { id: 'link-linkedin', label: 'LinkedIn', kind: 'link', parent: 'contact', image: 'assets/icons/linkedin.svg', url: 'https://www.linkedin.com/in/marc-massa-capo' }
   ],
 
   edges: [
@@ -171,6 +221,7 @@ const GRAPH = {
     { source: 'projects', target: 'hypermove' },
     { source: 'projects', target: 'harness' },
     { source: 'projects', target: 'kiro' },
+    { source: 'projects', target: 'framework' },
 
     { source: 'skills', target: 'skill-gcp' },
     { source: 'skills', target: 'skill-gke' },
@@ -188,6 +239,10 @@ const GRAPH = {
     { source: 'skills', target: 'skill-azuredevops' },
     { source: 'skills', target: 'skill-gitlabci' },
     { source: 'skills', target: 'skill-jira' },
+    { source: 'skills', target: 'skill-easyvista' },
+    { source: 'skills', target: 'skill-openproject' },
+    { source: 'skills', target: 'skill-itil' },
+    { source: 'skills', target: 'skill-agilekanban' },
     { source: 'skills', target: 'skill-python' },
     { source: 'skills', target: 'skill-typescript' },
     { source: 'skills', target: 'skill-go' },

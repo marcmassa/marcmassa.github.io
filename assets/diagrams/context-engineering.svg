@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="900" height="260" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif">
+  <text x="20" y="26" fill="#ECEAE3" font-size="15" font-weight="700">Context engineering — why state lives on disk, not in chat</text>
+  <text x="20" y="46" fill="#6E7887" font-size="11.5">Applied throughout: progress/current.md, specs/&lt;feature&gt;/, feature_list.json.</text>
+
+  <!-- left column: chat-only -->
+  <rect x="20" y="65" width="410" height="170" rx="10" fill="#2E211D" stroke="#D08772" stroke-width="1.5"/>
+  <text x="40" y="90" fill="#D08772" font-size="12.5" font-weight="700">Chat-only memory</text>
+  <circle cx="45" cy="112" r="10" fill="none" stroke="#D08772" stroke-width="1.5"/>
+  <circle cx="45" cy="138" r="14" fill="none" stroke="#D08772" stroke-width="1.5"/>
+  <circle cx="45" cy="172" r="18" fill="none" stroke="#D08772" stroke-width="1.5"/>
+  <text x="75" y="116" fill="#ADB5C4" font-size="10.5">Every turn re-sends the</text>
+  <text x="75" y="130" fill="#ADB5C4" font-size="10.5">whole conversation so far</text>
+  <text x="75" y="152" fill="#ADB5C4" font-size="10.5">Context grows unbounded —</text>
+  <text x="75" y="166" fill="#ADB5C4" font-size="10.5">cost and latency scale with it</text>
+  <text x="75" y="188" fill="#ADB5C4" font-size="10.5">The model re-derives past</text>
+  <text x="75" y="202" fill="#ADB5C4" font-size="10.5">decisions from raw transcript</text>
+  <text x="75" y="216" fill="#ADB5C4" font-size="10.5">every single time</text>
+
+  <!-- right column: repo-as-memory -->
+  <rect x="465" y="65" width="415" height="170" rx="10" fill="#1E2C24" stroke="#6FAE8A" stroke-width="1.5"/>
+  <text x="485" y="90" fill="#6FAE8A" font-size="12.5" font-weight="700">Repo as memory</text>
+  <rect x="490" y="102" width="16" height="16" rx="2" fill="none" stroke="#6FAE8A" stroke-width="1.5"/>
+  <rect x="490" y="128" width="16" height="16" rx="2" fill="none" stroke="#6FAE8A" stroke-width="1.5"/>
+  <rect x="490" y="154" width="16" height="16" rx="2" fill="none" stroke="#6FAE8A" stroke-width="1.5"/>
+  <text x="518" y="115" fill="#ADB5C4" font-size="10.5">A new session reads one file</text>
+  <text x="518" y="140" fill="#ADB5C4" font-size="10.5">(progress/current.md) instead of</text>
+  <text x="518" y="152" fill="#ADB5C4" font-size="10.5">the whole history</text>
+  <text x="518" y="177" fill="#ADB5C4" font-size="10.5">Cost is flat — a targeted read,</text>
+  <text x="518" y="192" fill="#ADB5C4" font-size="10.5">not a growing transcript</text>
+  <text x="485" y="215" fill="#ADB5C4" font-size="10.5">Decisions are already distilled —</text>
+  <text x="485" y="229" fill="#ADB5C4" font-size="10.5">no re-deriving them from scratch</text>
+</svg>

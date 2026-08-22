@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="900" height="320" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif">
+  <text x="20" y="26" fill="#ECEAE3" font-size="15" font-weight="700">CLI-agnostic agent architecture</text>
+  <text x="20" y="46" fill="#6E7887" font-size="11.5">One manifest, rendered into whichever AI CLI is actually running.</text>
+
+  <!-- center: agentic.json -->
+  <rect x="380" y="130" width="140" height="60" rx="10" fill="#3a2a10" stroke="#c98500" stroke-width="2.5"/>
+  <text x="450" y="156" fill="#ECEAE3" font-size="12.5" text-anchor="middle" font-weight="700">agentic.json</text>
+  <text x="450" y="174" fill="#ADB5C4" font-size="9.5" text-anchor="middle">canonical manifest</text>
+
+  <!-- connections to 4 concepts -->
+  <line x1="450" y1="130" x2="450" y2="80" stroke="#2a3550" stroke-width="1.5"/>
+  <line x1="380" y1="150" x2="140" y2="80" stroke="#2a3550" stroke-width="1.5"/>
+  <line x1="380" y1="170" x2="140" y2="260" stroke="#2a3550" stroke-width="1.5"/>
+  <line x1="520" y1="150" x2="760" y2="80" stroke="#2a3550" stroke-width="1.5"/>
+  <line x1="520" y1="170" x2="760" y2="260" stroke="#2a3550" stroke-width="1.5"/>
+
+  <!-- Subagents -->
+  <rect x="40" y="35" width="200" height="70" rx="10" fill="#12314a" stroke="#199e70" stroke-width="1.5"/>
+  <text x="140" y="58" fill="#ECEAE3" font-size="12" text-anchor="middle" font-weight="700">Subagents</text>
+  <text x="140" y="76" fill="#ADB5C4" font-size="9.5" text-anchor="middle">harness → spec-author →</text>
+  <text x="140" y="90" fill="#ADB5C4" font-size="9.5" text-anchor="middle">implementer → reviewer</text>
+
+  <!-- Skills -->
+  <rect x="40" y="225" width="200" height="70" rx="10" fill="#12314a" stroke="#199e70" stroke-width="1.5"/>
+  <text x="140" y="248" fill="#ECEAE3" font-size="12" text-anchor="middle" font-weight="700">Skills</text>
+  <text x="140" y="266" fill="#ADB5C4" font-size="9.5" text-anchor="middle">progressive disclosure —</text>
+  <text x="140" y="280" fill="#ADB5C4" font-size="9.5" text-anchor="middle">loaded only when relevant</text>
+
+  <!-- Hooks -->
+  <rect x="660" y="35" width="200" height="70" rx="10" fill="#3a2a10" stroke="#c98500" stroke-width="1.5"/>
+  <text x="760" y="58" fill="#ECEAE3" font-size="12" text-anchor="middle" font-weight="700">Hooks</text>
+  <text x="760" y="76" fill="#ADB5C4" font-size="9.5" text-anchor="middle">on_spec_created ·</text>
+  <text x="760" y="90" fill="#ADB5C4" font-size="9.5" text-anchor="middle">on_feature_done · on_check_pass</text>
+
+  <!-- Adapters -->
+  <rect x="660" y="225" width="200" height="70" rx="10" fill="#3a2a10" stroke="#c98500" stroke-width="1.5"/>
+  <text x="760" y="248" fill="#ECEAE3" font-size="12" text-anchor="middle" font-weight="700">CLI adapters</text>
+  <text x="760" y="266" fill="#ADB5C4" font-size="9.5" text-anchor="middle">claude-code · gemini-cli ·</text>
+  <text x="760" y="280" fill="#ADB5C4" font-size="9.5" text-anchor="middle">opencode — same source of truth</text>
+
+  <!-- AGENTS.md top -->
+  <rect x="370" y="10" width="160" height="45" rx="8" fill="#12314a" stroke="#199e70" stroke-width="2"/>
+  <text x="450" y="32" fill="#ECEAE3" font-size="11.5" text-anchor="middle" font-weight="700">AGENTS.md</text>
+  <text x="450" y="46" fill="#6E7887" font-size="9" text-anchor="middle">the cross-CLI entry point</text>
+  <line x1="450" y1="55" x2="450" y2="130" stroke="#2a3550" stroke-width="1.5"/>
+</svg>

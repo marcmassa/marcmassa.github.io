@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 170" width="900" height="170" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif">
+  <text x="20" y="20" fill="#ECEAE3" font-size="14" font-weight="700">SDD lifecycle — no code before an approved spec (EARS notation)</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#4d5566"/>
+    </marker>
+  </defs>
+
+  <!-- flow line -->
+  <line x1="70" y1="75" x2="830" y2="75" stroke="#2a3550" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- pending -->
+  <rect x="20" y="50" width="120" height="50" rx="25" fill="#12314a" stroke="#199e70" stroke-width="2"/>
+  <text x="80" y="80" fill="#ECEAE3" font-size="14" text-anchor="middle" font-weight="600">pending</text>
+  <text x="80" y="120" fill="#6E7887" font-size="11" text-anchor="middle">feature filed</text>
+
+  <!-- spec_ready -->
+  <rect x="210" y="50" width="140" height="50" rx="25" fill="#3a2a10" stroke="#c98500" stroke-width="2"/>
+  <text x="280" y="80" fill="#ECEAE3" font-size="14" text-anchor="middle" font-weight="600">spec_ready</text>
+  <text x="280" y="120" fill="#6E7887" font-size="11" text-anchor="middle">spec-author writes</text>
+  <text x="280" y="134" fill="#6E7887" font-size="11" text-anchor="middle">requirements/design/tasks</text>
+
+  <!-- human gate -->
+  <g>
+    <rect x="415" y="40" width="110" height="70" rx="12" fill="#1B2438" stroke="#E0A94A" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="470" y="70" fill="#E0A94A" font-size="12.5" text-anchor="middle" font-weight="700">⏸ HUMAN</text>
+    <text x="470" y="87" fill="#ADB5C4" font-size="11" text-anchor="middle">reviews &amp; approves</text>
+  </g>
+
+  <!-- in_progress -->
+  <rect x="590" y="50" width="140" height="50" rx="25" fill="#12314a" stroke="#199e70" stroke-width="2"/>
+  <text x="660" y="80" fill="#ECEAE3" font-size="14" text-anchor="middle" font-weight="600">in_progress</text>
+  <text x="660" y="120" fill="#6E7887" font-size="11" text-anchor="middle">implementer executes</text>
+  <text x="660" y="134" fill="#6E7887" font-size="11" text-anchor="middle">tasks.md, one at a time</text>
+
+  <!-- done -->
+  <rect x="790" y="50" width="90" height="50" rx="25" fill="#12314a" stroke="#c98500" stroke-width="3"/>
+  <text x="835" y="80" fill="#ECEAE3" font-size="14" text-anchor="middle" font-weight="600">done</text>
+  <text x="835" y="120" fill="#6E7887" font-size="11" text-anchor="middle">check.sh green</text>
+
+  <text x="20" y="158" fill="#6E7887" font-size="11">Requirements use EARS: "WHEN &lt;event&gt; SHALL &lt;action&gt;" — one SHALL per requirement, each verifiable.</text>
+</svg>
