@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cy = cytoscape({
       container: document.getElementById('cy'),
       elements: elements,
-      minZoom: 0.4,
+      minZoom: 0.22,
       maxZoom: 2.5,
       wheelSensitivity: 0.25,
       style: [
@@ -79,8 +79,19 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
       layout: (colaAvailable && !reduceMotion)
         ? { name: 'cola', animate: true, infinite: true, avoidOverlap: true,
-            edgeLength: 80, nodeSpacing: 8, padding: 40, randomize: false, fit: true }
-        : { name: 'cose', animate: !reduceMotion, idealEdgeLength: 75, nodeRepulsion: 9500, padding: 40 }
+            // Tuned for ~47 nodes (2026-08-22) — the original 8px/80px spacing
+            // was set for a ~26-node graph and caused constant jitter as the
+            // solver fought to fit too many leaves into too little room.
+            edgeLength: function (edge) {
+              const a = edge.source().data('kind'), b = edge.target().data('kind');
+              if (a === 'hub' || b === 'hub') return 170;
+              if (a === 'primary' || b === 'primary') return 130;
+              return 60;
+            },
+            nodeSpacing: 22, padding: 60, randomize: false, fit: true,
+            unconstrIter: 20, userConstIter: 20, allConstIter: 20
+          }
+        : { name: 'cose', animate: !reduceMotion, idealEdgeLength: 90, nodeRepulsion: 12000, padding: 60 }
     });
     setupIconLayer();
     wireInteraction();
