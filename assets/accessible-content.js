@@ -21,9 +21,24 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       html += '<p>' + n.detail.body + '</p>';
     }
-    if (n.detail.skillsList) {
-      html += '<ul class="skills-list">' + n.detail.skillsList.map(s =>
-        '<li><strong>' + s.name + '</strong> — ' + s.note + '</li>'
+    function skillGroup(label, list) {
+      if (!list) return '';
+      return '<p class="mono meta" style="margin-top:12px;">' + label + '</p><ul class="skills-list">' +
+        list.map(s => '<li><strong>' + s.name + '</strong> — ' + s.note + '</li>').join('') + '</ul>';
+    }
+    if (n.detail.hardSkillGroups) {
+      html += n.detail.hardSkillGroups.map(g => skillGroup(g.category, g.items)).join('');
+    }
+    html += skillGroup('Soft skills', n.detail.softSkills);
+    if (n.detail.certGroups) {
+      html += n.detail.certGroups.map(g =>
+        '<p class="mono meta" style="margin-top:12px;">' + g.category + '</p><ul class="skills-list">' +
+        g.items.map(i => '<li>' + i + '</li>').join('') + '</ul>'
+      ).join('');
+    }
+    if (n.detail.booksList) {
+      html += '<ul class="skills-list">' + n.detail.booksList.map(b =>
+        '<li><strong>' + b.name + '</strong> — <span class="mono">' + b.author + '</span> — ' + b.note + '</li>'
       ).join('') + '</ul>';
     }
     if (n.detail.stack) html += '<p class="mono meta">' + n.detail.stack + '</p>';
@@ -52,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Leaves directly under this primary (contact links) — skipped for Skills,
     // whose leaves are already covered by the richer skillsList above.
-    const leaves = n.detail.skillsList ? [] : GRAPH.nodes.filter(l => l.parent === n.id);
+    const leaves = n.detail.hardSkillGroups ? [] : GRAPH.nodes.filter(l => l.parent === n.id);
     if (leaves.length) {
       const ul = document.createElement('ul');
       ul.innerHTML = leaves.map(l => l.kind === 'link'
