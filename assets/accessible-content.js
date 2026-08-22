@@ -7,12 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const root = document.getElementById('accessible-content');
   const byId = {};
   GRAPH.nodes.forEach(n => { byId[n.id] = n; });
-  const hub = byId['hub'];
-
-  const intro = document.createElement('p');
-  intro.className = 'intro';
-  intro.textContent = hub.detail.body;
-  root.appendChild(intro);
+  // Note: the hub's intro/location blurb now lives in the page header (Marc's
+  // request, 2026-08-22) — not repeated here to avoid the earlier duplicate-banner issue.
 
   function renderDetail(n) {
     let html = '<h2>' + n.detail.title + '</h2><p class="teaser">' + n.detail.teaser + '</p>';
