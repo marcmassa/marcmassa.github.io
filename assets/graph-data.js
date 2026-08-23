@@ -1,6 +1,8 @@
 /* Node/edge schema for the interactive mind-map (R9). Single source of truth (R8).
-   Hierarchy (F6): hub > primary (About/Experience/Projects/Skills/Contact) >
-   secondary (individual projects, under Projects) > leaf/link. */
+   Hierarchy (F6, deepened 2026-08-23 per Marc's request to stop Skills crowding):
+   hub > primary (About/Experience/Projects/Skills/Certifications/Books/Contact)
+       > secondary (individual projects under Projects; skill categories under Skills)
+       > leaf/link. */
 const GRAPH = {
   nodes: [
     { id: 'hub', label: 'Marc Massa Capó', kind: 'hub', image: 'assets/memoji.png',
@@ -26,50 +28,7 @@ const GRAPH = {
 
     { id: 'skills', label: 'Skills', kind: 'primary', image: 'assets/icons/skills.svg',
       detail: { title: 'Skills', teaser: 'Stack across cloud, AI infra, and automation — plus how I actually work',
-        body: 'Real hands-on tools, not just certifications — and how each one shows up in my day-to-day work.',
-        hardSkillGroups: [
-          { category: 'Cloud & AI Platforms', items: [
-            { name: 'GCP', note: 'By far my primary cloud — Compute Engine, Cloud SQL, Load Balancing, Cloud Run, GKE, and IaC-managed infrastructure end to end' },
-            { name: 'GKE', note: 'Operating production workloads on Google Kubernetes Engine' },
-            { name: 'Gemini Enterprise Agent Platform', note: 'AI platform work — model serving & agent orchestration (Vertex AI\'s current branding post Cloud Next 2026)' },
-            { name: 'Azure', note: 'Cloud infrastructure and services on Microsoft Azure' },
-            { name: 'OpenShift', note: 'Enterprise Kubernetes — used at RIU Hotels to containerize critical services (+50% resilience)' }
-          ] },
-          { category: 'Automation & Agentic AI', items: [
-            { name: 'n8n', note: 'Workflow automation, from deterministic pipelines to agent-assisted flows' },
-            { name: 'MCP', note: 'Connecting agent workflows to real tools and data via the Model Context Protocol' }
-          ] },
-          { category: 'Container Orchestration & IaC', items: [
-            { name: 'Kubernetes', note: 'Container orchestration across cloud and on-prem environments' },
-            { name: 'Terraform', note: 'Infrastructure as code for reproducible cloud provisioning' },
-            { name: 'Argo CD', note: 'GitOps continuous delivery for Kubernetes, paired with Terraform for declarative infra' },
-            { name: 'GitOps', note: 'Git as the single source of truth for infra and config state' }
-          ] },
-          { category: 'CI/CD & Version Control', items: [
-            { name: 'Jenkins', note: 'Pipeline automation — helped cut GCP Cloud Run costs 30% at Indra' },
-            { name: 'GitLab CI', note: 'Pipeline automation across Indra projects, alongside Jenkins' },
-            { name: 'GitHub Actions', note: 'CI/CD for open-source projects, including Harness Dashboard' },
-            { name: 'Azure DevOps', note: 'Pipelines and work-item tracking on Microsoft\'s DevOps suite' }
-          ] },
-          { category: 'Languages', items: [
-            { name: 'Python', note: 'SecurIT\'s backend and automation tooling' },
-            { name: 'TypeScript', note: 'SecurIT frontend and the Harness Dashboard extension' },
-            { name: 'Go', note: 'Hypermove\'s migration engine and backend services' }
-          ] },
-          { category: 'Ticketing & Task Management', items: [
-            { name: 'Jira', note: 'Daily ticketing and workflow tracking across teams' },
-            { name: 'EasyVista', note: 'ITSM ticketing for infrastructure and support requests' },
-            { name: 'OpenProject', note: 'Project management and planning' },
-            { name: 'ITIL', note: 'Working within ITIL-aligned service management practices' },
-            { name: 'Agile / Kanban', note: 'Day-to-day delivery workflow across teams' }
-          ] }
-        ],
-        softSkills: [
-          { name: 'Ownership', note: 'Taking a project from architecture to production alone and owning the outcome (SecurIT, Hypermove)' },
-          { name: 'Cross-team collaboration', note: 'Partnering across DevOps, business development, and client-facing teams to land shared wins' },
-          { name: 'Build-vs-buy judgment', note: 'Evaluating market alternatives honestly before deciding to build in-house (SecurIT)' },
-          { name: 'Technical documentation', note: 'Structuring collaboration between humans and AI agents (Harness SDD Framework)' }
-        ] } },
+        body: 'Real hands-on tools, not just certifications. Click a category to see the tools in it and how each one shows up in my day-to-day work.' } },
 
     { id: 'certifications', label: 'Certifications', kind: 'primary', image: 'assets/icons/certifications.svg',
       detail: { title: 'Certifications', teaser: 'Google Skills (Gold League, both profiles) + infrastructure & AI foundations',
@@ -166,35 +125,126 @@ const GRAPH = {
         body: 'Kanban-style task management web app with a Spanish-language UI — three columns (Por Hacer / En Progreso / Completadas) plus a productivity analytics dashboard. Single-package monorepo (no separate bundler config); ships its own MCP server.',
         stack: 'Bun · Elysia · React · Tailwind · SQLite' } },
 
-    // Skill leaves — hard skills
-    { id: 'skill-gcp', label: 'GCP', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-gke', label: 'GKE', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-gemini', label: 'Gemini Enterprise Agent Platform', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-k8s', label: 'Kubernetes', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-tf', label: 'Terraform', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-argo', label: 'Argo CD', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-gitops', label: 'GitOps', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-azure', label: 'Azure', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-openshift', label: 'OpenShift', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-n8n', label: 'n8n', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-mcp', label: 'MCP', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-jenkins', label: 'Jenkins', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-githubactions', label: 'GitHub Actions', kind: 'leaf', parent: 'skills'},
-    { id: 'skill-azuredevops', label: 'Azure DevOps', kind: 'leaf', parent: 'skills'},
-    { id: 'skill-gitlabci', label: 'GitLab CI', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-jira', label: 'Jira', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-easyvista', label: 'EasyVista', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-openproject', label: 'OpenProject', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-itil', label: 'ITIL', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-agilekanban', label: 'Agile / Kanban', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-python', label: 'Python', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-typescript', label: 'TypeScript', kind: 'leaf', parent: 'skills' },
-    { id: 'skill-go', label: 'Go', kind: 'leaf', parent: 'skills' },
-    // Skill leaves — soft skills
-    { id: 'soft-ownership', label: 'Ownership', kind: 'leaf', parent: 'skills' },
-    { id: 'soft-collab', label: 'Cross-team collaboration', kind: 'leaf', parent: 'skills' },
-    { id: 'soft-buildbuy', label: 'Build-vs-buy judgment', kind: 'leaf', parent: 'skills' },
-    { id: 'soft-docs', label: 'Technical documentation', kind: 'leaf', parent: 'skills' },
+    // Skill categories (secondary tier, under "Skills") — R9/F6 restructure, 2026-08-23:
+    // was skills → skill (30+ leaves crowding one node), now skills → category → skill.
+    { id: 'cat-cloud-ai', label: 'Cloud & AI Platforms', kind: 'secondary', image: 'assets/icons/cat-cloud.svg',
+      detail: { title: 'Cloud & AI Platforms', teaser: 'Where the infrastructure and the AI stack meet',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'GCP', note: 'By far my primary cloud — Compute Engine, Cloud SQL, Load Balancing, Cloud Run, GKE, and IaC-managed infrastructure end to end' },
+          { name: 'GKE', note: 'Operating production workloads on Google Kubernetes Engine' },
+          { name: 'Gemini Enterprise Agent Platform', note: 'AI platform work — model serving & agent orchestration (Vertex AI\'s current branding post Cloud Next 2026)' },
+          { name: 'Azure', note: 'Cloud infrastructure and services on Microsoft Azure' },
+          { name: 'OpenShift', note: 'Enterprise Kubernetes — used at RIU Hotels to containerize critical services (+50% resilience)' }
+        ] } },
+
+    { id: 'cat-ai-agents', label: 'AI Coding Agents & CLIs', kind: 'secondary', image: 'assets/icons/agent-cli.svg',
+      detail: { title: 'AI Coding Agents & CLIs', teaser: 'Hands-on, not just aware of them',
+        body: 'The tools I actually drive day to day — this portfolio itself is proof of the first one.',
+        skillsList: [
+          { name: 'Claude Code', note: 'Built this portfolio\'s interactive graph and its Harness SDD framework tooling end-to-end' },
+          { name: 'GitHub Copilot', note: 'Daily coding assistant across projects' },
+          { name: 'Gemini CLI', note: 'One of the CLIs the Harness SDD Framework renders adapters for — used hands-on, not just supported' },
+          { name: 'Kiro CLI', note: 'Used at the AWS-Spain workshop that produced Kiro Task Manager' }
+        ] } },
+
+    { id: 'cat-automation', label: 'Automation & Agentic AI', kind: 'secondary', image: 'assets/icons/cat-automation.svg',
+      detail: { title: 'Automation & Agentic AI', teaser: 'From deterministic pipelines to agent-assisted flows',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'n8n', note: 'Workflow automation, from deterministic pipelines to agent-assisted flows' },
+          { name: 'MCP', note: 'Connecting agent workflows to real tools and data via the Model Context Protocol' }
+        ] } },
+
+    { id: 'cat-containers-iac', label: 'Container Orchestration & IaC', kind: 'secondary', image: 'assets/icons/cat-containers.svg',
+      detail: { title: 'Container Orchestration & IaC', teaser: 'Declarative infra, GitOps-delivered',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'Kubernetes', note: 'Container orchestration across cloud and on-prem environments' },
+          { name: 'Terraform', note: 'Infrastructure as code for reproducible cloud provisioning' },
+          { name: 'Argo CD', note: 'GitOps continuous delivery for Kubernetes, paired with Terraform for declarative infra' },
+          { name: 'GitOps', note: 'Git as the single source of truth for infra and config state' }
+        ] } },
+
+    { id: 'cat-cicd', label: 'CI/CD & Version Control', kind: 'secondary', image: 'assets/icons/cat-cicd.svg',
+      detail: { title: 'CI/CD & Version Control', teaser: 'Pipeline automation across every project',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'Jenkins', note: 'Pipeline automation — helped cut GCP Cloud Run costs 30% at Indra' },
+          { name: 'GitLab CI', note: 'Pipeline automation across Indra projects, alongside Jenkins' },
+          { name: 'GitHub Actions', note: 'CI/CD for open-source projects, including Harness Dashboard' },
+          { name: 'Azure DevOps', note: 'Pipelines and work-item tracking on Microsoft\'s DevOps suite' }
+        ] } },
+
+    { id: 'cat-languages', label: 'Languages', kind: 'secondary', image: 'assets/icons/cat-languages.svg',
+      detail: { title: 'Languages', teaser: 'What I actually shipped each one in',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'Python', note: 'SecurIT\'s backend and automation tooling' },
+          { name: 'TypeScript', note: 'SecurIT frontend and the Harness Dashboard extension' },
+          { name: 'Go', note: 'Hypermove\'s migration engine and backend services' }
+        ] } },
+
+    { id: 'cat-ticketing', label: 'Ticketing & Task Management', kind: 'secondary', image: 'assets/icons/cat-ticketing.svg',
+      detail: { title: 'Ticketing & Task Management', teaser: 'Tools and methodology, day to day',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'Jira', note: 'Daily ticketing and workflow tracking across teams' },
+          { name: 'EasyVista', note: 'ITSM ticketing for infrastructure and support requests' },
+          { name: 'OpenProject', note: 'Project management and planning' },
+          { name: 'ITIL', note: 'Working within ITIL-aligned service management practices' },
+          { name: 'Agile / Kanban', note: 'Day-to-day delivery workflow across teams' }
+        ] } },
+
+    { id: 'cat-soft-skills', label: 'Soft Skills', kind: 'secondary', image: 'assets/icons/cat-soft.svg',
+      detail: { title: 'Soft Skills', teaser: 'How I actually work with people, not just tools',
+        body: 'Click a connected node for how each one shows up in my work.',
+        skillsList: [
+          { name: 'Ownership', note: 'Taking a project from architecture to production alone and owning the outcome (SecurIT, Hypermove)' },
+          { name: 'Cross-team collaboration', note: 'Partnering across DevOps, business development, and client-facing teams to land shared wins' },
+          { name: 'Build-vs-buy judgment', note: 'Evaluating market alternatives honestly before deciding to build in-house (SecurIT)' },
+          { name: 'Technical documentation', note: 'Structuring collaboration between humans and AI agents (Harness SDD Framework)' }
+        ] } },
+
+    // Skill leaves — Cloud & AI Platforms
+    { id: 'skill-gcp', label: 'GCP', kind: 'leaf', parent: 'cat-cloud-ai' },
+    { id: 'skill-gke', label: 'GKE', kind: 'leaf', parent: 'cat-cloud-ai' },
+    { id: 'skill-gemini', label: 'Gemini Enterprise Agent Platform', kind: 'leaf', parent: 'cat-cloud-ai' },
+    { id: 'skill-azure', label: 'Azure', kind: 'leaf', parent: 'cat-cloud-ai' },
+    { id: 'skill-openshift', label: 'OpenShift', kind: 'leaf', parent: 'cat-cloud-ai' },
+    // Skill leaves — AI Coding Agents & CLIs
+    { id: 'skill-claudecode', label: 'Claude Code', kind: 'leaf', parent: 'cat-ai-agents' },
+    { id: 'skill-copilot', label: 'GitHub Copilot', kind: 'leaf', parent: 'cat-ai-agents' },
+    { id: 'skill-geminicli', label: 'Gemini CLI', kind: 'leaf', parent: 'cat-ai-agents' },
+    { id: 'skill-kirocli', label: 'Kiro CLI', kind: 'leaf', parent: 'cat-ai-agents' },
+    // Skill leaves — Automation & Agentic AI
+    { id: 'skill-n8n', label: 'n8n', kind: 'leaf', parent: 'cat-automation' },
+    { id: 'skill-mcp', label: 'MCP', kind: 'leaf', parent: 'cat-automation' },
+    // Skill leaves — Container Orchestration & IaC
+    { id: 'skill-k8s', label: 'Kubernetes', kind: 'leaf', parent: 'cat-containers-iac' },
+    { id: 'skill-tf', label: 'Terraform', kind: 'leaf', parent: 'cat-containers-iac' },
+    { id: 'skill-argo', label: 'Argo CD', kind: 'leaf', parent: 'cat-containers-iac' },
+    { id: 'skill-gitops', label: 'GitOps', kind: 'leaf', parent: 'cat-containers-iac' },
+    // Skill leaves — CI/CD & Version Control
+    { id: 'skill-jenkins', label: 'Jenkins', kind: 'leaf', parent: 'cat-cicd' },
+    { id: 'skill-gitlabci', label: 'GitLab CI', kind: 'leaf', parent: 'cat-cicd' },
+    { id: 'skill-githubactions', label: 'GitHub Actions', kind: 'leaf', parent: 'cat-cicd' },
+    { id: 'skill-azuredevops', label: 'Azure DevOps', kind: 'leaf', parent: 'cat-cicd' },
+    // Skill leaves — Languages
+    { id: 'skill-python', label: 'Python', kind: 'leaf', parent: 'cat-languages' },
+    { id: 'skill-typescript', label: 'TypeScript', kind: 'leaf', parent: 'cat-languages' },
+    { id: 'skill-go', label: 'Go', kind: 'leaf', parent: 'cat-languages' },
+    // Skill leaves — Ticketing & Task Management
+    { id: 'skill-jira', label: 'Jira', kind: 'leaf', parent: 'cat-ticketing' },
+    { id: 'skill-easyvista', label: 'EasyVista', kind: 'leaf', parent: 'cat-ticketing' },
+    { id: 'skill-openproject', label: 'OpenProject', kind: 'leaf', parent: 'cat-ticketing' },
+    { id: 'skill-itil', label: 'ITIL', kind: 'leaf', parent: 'cat-ticketing' },
+    { id: 'skill-agilekanban', label: 'Agile / Kanban', kind: 'leaf', parent: 'cat-ticketing' },
+    // Skill leaves — Soft Skills
+    { id: 'soft-ownership', label: 'Ownership', kind: 'leaf', parent: 'cat-soft-skills' },
+    { id: 'soft-collab', label: 'Cross-team collaboration', kind: 'leaf', parent: 'cat-soft-skills' },
+    { id: 'soft-buildbuy', label: 'Build-vs-buy judgment', kind: 'leaf', parent: 'cat-soft-skills' },
+    { id: 'soft-docs', label: 'Technical documentation', kind: 'leaf', parent: 'cat-soft-skills' },
 
     // Project stack leaves
     { id: 'securit-py', label: 'Python', kind: 'leaf', parent: 'securit' },
@@ -223,33 +273,53 @@ const GRAPH = {
     { source: 'projects', target: 'kiro' },
     { source: 'projects', target: 'framework' },
 
-    { source: 'skills', target: 'skill-gcp' },
-    { source: 'skills', target: 'skill-gke' },
-    { source: 'skills', target: 'skill-gemini' },
-    { source: 'skills', target: 'skill-k8s' },
-    { source: 'skills', target: 'skill-tf' },
-    { source: 'skills', target: 'skill-argo' },
-    { source: 'skills', target: 'skill-gitops' },
-    { source: 'skills', target: 'skill-azure' },
-    { source: 'skills', target: 'skill-openshift' },
-    { source: 'skills', target: 'skill-n8n' },
-    { source: 'skills', target: 'skill-mcp' },
-    { source: 'skills', target: 'skill-jenkins' },
-    { source: 'skills', target: 'skill-githubactions' },
-    { source: 'skills', target: 'skill-azuredevops' },
-    { source: 'skills', target: 'skill-gitlabci' },
-    { source: 'skills', target: 'skill-jira' },
-    { source: 'skills', target: 'skill-easyvista' },
-    { source: 'skills', target: 'skill-openproject' },
-    { source: 'skills', target: 'skill-itil' },
-    { source: 'skills', target: 'skill-agilekanban' },
-    { source: 'skills', target: 'skill-python' },
-    { source: 'skills', target: 'skill-typescript' },
-    { source: 'skills', target: 'skill-go' },
-    { source: 'skills', target: 'soft-ownership' },
-    { source: 'skills', target: 'soft-collab' },
-    { source: 'skills', target: 'soft-buildbuy' },
-    { source: 'skills', target: 'soft-docs' },
+    { source: 'skills', target: 'cat-cloud-ai' },
+    { source: 'skills', target: 'cat-ai-agents' },
+    { source: 'skills', target: 'cat-automation' },
+    { source: 'skills', target: 'cat-containers-iac' },
+    { source: 'skills', target: 'cat-cicd' },
+    { source: 'skills', target: 'cat-languages' },
+    { source: 'skills', target: 'cat-ticketing' },
+    { source: 'skills', target: 'cat-soft-skills' },
+
+    { source: 'cat-cloud-ai', target: 'skill-gcp' },
+    { source: 'cat-cloud-ai', target: 'skill-gke' },
+    { source: 'cat-cloud-ai', target: 'skill-gemini' },
+    { source: 'cat-cloud-ai', target: 'skill-azure' },
+    { source: 'cat-cloud-ai', target: 'skill-openshift' },
+
+    { source: 'cat-ai-agents', target: 'skill-claudecode' },
+    { source: 'cat-ai-agents', target: 'skill-copilot' },
+    { source: 'cat-ai-agents', target: 'skill-geminicli' },
+    { source: 'cat-ai-agents', target: 'skill-kirocli' },
+
+    { source: 'cat-automation', target: 'skill-n8n' },
+    { source: 'cat-automation', target: 'skill-mcp' },
+
+    { source: 'cat-containers-iac', target: 'skill-k8s' },
+    { source: 'cat-containers-iac', target: 'skill-tf' },
+    { source: 'cat-containers-iac', target: 'skill-argo' },
+    { source: 'cat-containers-iac', target: 'skill-gitops' },
+
+    { source: 'cat-cicd', target: 'skill-jenkins' },
+    { source: 'cat-cicd', target: 'skill-gitlabci' },
+    { source: 'cat-cicd', target: 'skill-githubactions' },
+    { source: 'cat-cicd', target: 'skill-azuredevops' },
+
+    { source: 'cat-languages', target: 'skill-python' },
+    { source: 'cat-languages', target: 'skill-typescript' },
+    { source: 'cat-languages', target: 'skill-go' },
+
+    { source: 'cat-ticketing', target: 'skill-jira' },
+    { source: 'cat-ticketing', target: 'skill-easyvista' },
+    { source: 'cat-ticketing', target: 'skill-openproject' },
+    { source: 'cat-ticketing', target: 'skill-itil' },
+    { source: 'cat-ticketing', target: 'skill-agilekanban' },
+
+    { source: 'cat-soft-skills', target: 'soft-ownership' },
+    { source: 'cat-soft-skills', target: 'soft-collab' },
+    { source: 'cat-soft-skills', target: 'soft-buildbuy' },
+    { source: 'cat-soft-skills', target: 'soft-docs' },
 
     { source: 'securit', target: 'securit-py' },
     { source: 'securit', target: 'securit-ts' },

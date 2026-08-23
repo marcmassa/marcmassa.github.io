@@ -175,15 +175,11 @@ document.addEventListener('DOMContentLoaded', function () {
           '<figcaption>' + dg.caption + '</figcaption></figure>'
         ).join('');
       }
-      function skillGroup(label, list) {
-        if (!list) return '';
-        return '<div class="skill-group-label mono">' + label + '</div><ul class="skills-list">' +
-          list.map(s => '<li><strong>' + s.name + '</strong><span>' + s.note + '</span></li>').join('') + '</ul>';
+      if (d.detail.skillsList) {
+        html += '<ul class="skills-list">' + d.detail.skillsList.map(s =>
+          '<li><strong>' + s.name + '</strong><span>' + s.note + '</span></li>'
+        ).join('') + '</ul>';
       }
-      if (d.detail.hardSkillGroups) {
-        html += d.detail.hardSkillGroups.map(g => skillGroup(g.category, g.items)).join('');
-      }
-      html += skillGroup('Soft skills', d.detail.softSkills);
       if (d.detail.certGroups) {
         html += d.detail.certGroups.map(g =>
           '<div class="skill-group-label mono">' + g.category + '</div><ul class="skills-list">' +

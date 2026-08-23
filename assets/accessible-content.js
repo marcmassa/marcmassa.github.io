@@ -27,15 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
         '<figcaption>' + dg.caption + '</figcaption></figure>'
       ).join('');
     }
-    function skillGroup(label, list) {
-      if (!list) return '';
-      return '<p class="mono meta" style="margin-top:12px;">' + label + '</p><ul class="skills-list">' +
-        list.map(s => '<li><strong>' + s.name + '</strong> — ' + s.note + '</li>').join('') + '</ul>';
+    if (n.detail.skillsList) {
+      html += '<ul class="skills-list">' + n.detail.skillsList.map(s =>
+        '<li><strong>' + s.name + '</strong> — ' + s.note + '</li>'
+      ).join('') + '</ul>';
     }
-    if (n.detail.hardSkillGroups) {
-      html += n.detail.hardSkillGroups.map(g => skillGroup(g.category, g.items)).join('');
-    }
-    html += skillGroup('Soft skills', n.detail.softSkills);
     if (n.detail.certGroups) {
       html += n.detail.certGroups.map(g =>
         '<p class="mono meta" style="margin-top:12px;">' + g.category + '</p><ul class="skills-list">' +
@@ -66,14 +62,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const sub = document.createElement('div');
       sub.className = 'sub-entry';
       sub.innerHTML = renderDetail(c);
-      const leaves = GRAPH.nodes.filter(l => l.parent === c.id);
-      if (leaves.length) sub.innerHTML += '<ul>' + leaves.map(l => '<li>' + l.label + '</li>').join('') + '</ul>';
+      if (!c.detail.skillsList) {
+        const leaves = GRAPH.nodes.filter(l => l.parent === c.id);
+        if (leaves.length) sub.innerHTML += '<ul>' + leaves.map(l => '<li>' + l.label + '</li>').join('') + '</ul>';
+      }
       section.appendChild(sub);
     });
 
-    // Leaves directly under this primary (contact links) — skipped for Skills,
-    // whose leaves are already covered by the richer skillsList above.
-    const leaves = n.detail.hardSkillGroups ? [] : GRAPH.nodes.filter(l => l.parent === n.id);
+    // Leaves directly under this primary (contact links)
+    const leaves = GRAPH.nodes.filter(l => l.parent === n.id);
     if (leaves.length) {
       const ul = document.createElement('ul');
       ul.innerHTML = leaves.map(l => l.kind === 'link'
