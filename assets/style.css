@@ -155,7 +155,12 @@ body {
   /* No backdrop-filter here — this pill is opaque-ish already; stacking a
      second blur under the .view-tabs container's own blur was producing a
      "ghost double indicator" artifact (reported 2026-08-23). */
-  transition: left 380ms cubic-bezier(.34,1.56,.64,1), width 380ms cubic-bezier(.34,1.56,.64,1);
+  /* Single animation now, not two competing ones (2026-08-23): a second,
+     independently-timed scale-pulse used to run alongside this slide —
+     different durations/easings on the same tiny element produced an
+     intermittent wobble that was hard to capture in a still screenshot.
+     One transition, one spring, nothing else touches transform here. */
+  transition: left 320ms cubic-bezier(.34,1.32,.64,1), width 320ms cubic-bezier(.34,1.32,.64,1);
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
@@ -168,13 +173,6 @@ body {
   width: 84%; height: 38%;
   border-radius: 100px;
   background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
-}
-.view-tabs-glow.pulse { animation: glow-pulse 460ms cubic-bezier(.34,1.56,.64,1); }
-@keyframes glow-pulse {
-  0% { transform: scale(1); }
-  35% { transform: scale(1.1, 0.85); }
-  65% { transform: scale(0.96, 1.06); }
-  100% { transform: scale(1); }
 }
 .view-tab {
   position: relative;

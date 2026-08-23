@@ -69,13 +69,11 @@
     glow.style.width = target.offsetWidth + 'px';
     glow.style.left = target.offsetLeft + 'px';
   }
-  // "Liquid glass" press feedback on the sliding indicator itself.
-  function pulseGlow() {
-    if (reduceMotion) return;
-    glow.classList.remove('pulse');
-    void glow.offsetWidth; // restart the animation
-    glow.classList.add('pulse');
-  }
+  // Note (2026-08-23): there used to be a second, independently-timed pulse
+  // (scale) animation layered on top of the slide here. Two animations with
+  // different durations/easings fighting on the same tiny element produced an
+  // intermittent wobble that was hard to pin down in a screenshot. Removed —
+  // the slide transition alone (with a spring easing) is the whole effect now.
 
   function show(which) {
     var toGraph = which === 'graph';
@@ -86,7 +84,6 @@
     tabGraph.classList.toggle('active', toGraph);
     tabList.classList.toggle('active', !toGraph);
     moveGlow(toGraph);
-    pulseGlow();
 
     var showEl = toGraph ? graphPanel : listPanel;
     var hideEl = toGraph ? listPanel : graphPanel;
