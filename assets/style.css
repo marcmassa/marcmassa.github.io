@@ -47,8 +47,10 @@ body {
   gap: 3px;
 }
 #site-header .brand {
-  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-  font-size: 19px;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 #site-header .role {
@@ -150,8 +152,9 @@ body {
     0 1px 2px rgba(0,0,0,0.2),
     inset 0 1.5px 1px rgba(255,255,255,0.75),
     inset 0 -2px 3px rgba(110,64,0,0.4);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  /* No backdrop-filter here — this pill is opaque-ish already; stacking a
+     second blur under the .view-tabs container's own blur was producing a
+     "ghost double indicator" artifact (reported 2026-08-23). */
   transition: left 380ms cubic-bezier(.34,1.56,.64,1), width 380ms cubic-bezier(.34,1.56,.64,1);
   pointer-events: none;
   z-index: 0;
@@ -241,13 +244,13 @@ body {
 }
 
 .focus-breadcrumb button {
-  background: rgba(18, 26, 44, 0.4);
+  background: rgba(18, 26, 44, 0.65);
   border: 1px solid transparent;
   border-radius: 100px;
   padding: 3px 11px;
 }
 .focus-breadcrumb button:hover {
-  background: rgba(18, 26, 44, 0.75);
+  background: rgba(18, 26, 44, 0.85);
   border-color: var(--border);
   color: var(--amber);
 }
@@ -342,12 +345,11 @@ body {
   max-width: 90vw;
 }
 .focus-breadcrumb button {
-  background: none;
-  border: none;
+  /* background/border/padding come from the unified glass-button rule above —
+     duplicating them here previously overrode that styling (found 2026-08-23). */
   color: var(--ink-faint);
   font-size: 12.5px;
   cursor: pointer;
-  padding: 2px 4px;
 }
 .focus-breadcrumb button:hover,
 .focus-breadcrumb button:focus-visible { color: var(--amber); }
@@ -384,7 +386,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(18, 26, 44, 0.55);
+  background: rgba(18, 26, 44, 0.8);
   border: 1px solid var(--border);
   border-radius: 100px;
   padding: 7px 14px;
@@ -405,10 +407,15 @@ body {
   position: relative;
   width: min(680px, 90vw);
   max-height: min(680px, 84vh);
-  background: var(--surface);
-  border: 1px solid var(--border);
+  /* Glass, extended here per Marc's 2026-08-23 request — but kept high-opacity
+     (0.96) on purpose: blur reads as "glass", transparency is what hurts
+     legibility, so opacity stays high while the blur still shows through. */
+  background: rgba(18, 26, 44, 0.96);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.06);
   padding: 32px 34px 28px;
   overflow-y: auto;
   transform: scale(0.92);
@@ -421,8 +428,8 @@ body {
 }
 
 .focus-card h2 {
-  font-family: Georgia, "Iowan Old Style", serif;
-  font-weight: 400;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
   font-size: 28px;
   margin: 0 0 10px;
   color: var(--ink);

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { selector: 'node[kind = "hub"]', style: {
             'width': 92, 'height': 92,
             'background-color': '#12314a', 'border-color': '#c98500',
-            'font-size': 15, 'color': '#ECEAE3', 'font-family': 'Georgia, serif'
+            'font-size': 15, 'font-weight': 700, 'color': '#ECEAE3', 'font-family': "'Space Grotesk', sans-serif"
         }},
         { selector: 'node[kind = "primary"]', style: {
             'width': 58, 'height': 58,
