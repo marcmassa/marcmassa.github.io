@@ -15,7 +15,11 @@ and git-tracked.
    repo — always `cd portfolio/` first (or `git -C portfolio/ ...`).
 2. **No PII beyond what's already public.** No phone number, no home address, no
    unpublished personal documents. Re-author any copy pulled from `marc/`, don't
-   paste it verbatim.
+   paste it verbatim. This extends to **repo structure**, not just personal data:
+   public-facing copy (anything in `graph-data.js`'s `detail` text, rendered to
+   visitors) must never name `marc/` or `mama/` explicitly, even in passing —
+   "portfolio/" is the only `CV/` subdirectory name safe to mention publicly
+   (confirmed by Marc 2026-08-23, after a draft sentence briefly did this).
 3. **No salary, interview-prep, or negotiation content, ever.** This directory is
    public. That material stays out of git entirely.
 4. **Visual identity is locked to the established brand**: dark navy background,
