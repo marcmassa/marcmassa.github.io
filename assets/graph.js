@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function detailHtml(d) {
       let html = '<h2 id="focus-title">' + d.detail.title + '</h2><p class="teaser">' + d.detail.teaser + '</p>';
+      if (d.detail.status) html += '<span class="status-badge">' + d.detail.status + '</span>';
       if (d.detail.timeline) {
         d.detail.timeline.forEach(job => {
           html += '<div class="job"><div class="job-role">' + job.role + '</div>' +
@@ -169,6 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         html += '<p>' + d.detail.body + '</p>';
       }
+      if (d.detail.approach) html += '<div class="skill-group-label mono">Approach</div><p>' + d.detail.approach + '</p>';
+      if (d.detail.challenge) html += '<div class="skill-group-label mono">Challenge &amp; lesson</div><p>' + d.detail.challenge + '</p>';
       if (d.detail.diagrams) {
         html += d.detail.diagrams.map(dg =>
           '<figure class="card-diagram-fig"><img class="card-diagram" src="' + dg.src + '" alt="' + dg.caption + '" loading="lazy">' +

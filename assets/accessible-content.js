@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderDetail(n) {
     let html = '<h2>' + n.detail.title + '</h2><p class="teaser">' + n.detail.teaser + '</p>';
+    if (n.detail.status) html += '<p class="mono meta">Status: ' + n.detail.status + '</p>';
     if (n.detail.timeline) {
       n.detail.timeline.forEach(job => {
         html += '<div class="job"><p class="job-role">' + job.role + '</p>' +
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       html += '<p>' + n.detail.body + '</p>';
     }
+    if (n.detail.approach) html += '<p class="mono meta" style="margin-top:12px;">Approach</p><p>' + n.detail.approach + '</p>';
+    if (n.detail.challenge) html += '<p class="mono meta" style="margin-top:12px;">Challenge &amp; lesson</p><p>' + n.detail.challenge + '</p>';
     if (n.detail.diagrams) {
       html += n.detail.diagrams.map(dg =>
         '<figure class="card-diagram-fig"><img class="card-diagram" src="' + dg.src + '" alt="' + dg.caption + '" loading="lazy">' +

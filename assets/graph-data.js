@@ -88,16 +88,23 @@ const GRAPH = {
     // Projects (secondary tier, under "Projects")
     { id: 'securit', label: 'SecurIT', kind: 'secondary', flagship: true, image: 'assets/icons/securit.svg',
       detail: { title: 'SecurIT', teaser: 'Sole developer, end-to-end — adopted across 30+ teams at Indra',
+        status: 'Production — actively maintained, sole developer',
         body: 'Kubernetes-native DevSecOps compliance platform centralizing every analysis and test result of a product — SonarQube, Trivy, SBOM (CycloneDX/SPDX), Dependency-Check — into a single place. AI-powered (Google ADK/Gemini) license mitigation.',
+        approach: 'Each scanner writes into a common schema in PostgreSQL, so one dashboard reasons over SAST, SCA, and SBOM data without re-implementing any of the underlying tools. The AI licensing-mitigation layer runs as a bounded advisory step, not an autonomous approver — every suggestion is reviewed by a human before it reaches a merge.',
+        challenge: 'Getting 30+ teams to trust one source of truth meant the schema had to survive scanner version drift without breaking dashboards — solved by normalizing each tool\'s raw output into a stable internal format at ingestion time, so upstream tool changes never leak into the UI.',
         stack: 'Python · TypeScript · React · PostgreSQL · Kubernetes', metric: 'Adopted across 30+ product teams at Indra — review cycles cut from days to hours' } },
 
     { id: 'hypermove', label: 'Hypermove', kind: 'secondary', image: 'assets/icons/hypermove.svg',
       detail: { title: 'Hypermove', teaser: 'Developer, Product Owner & architect — VMware Exit migration solution',
+        status: 'Production — company-wide standard tool',
         body: 'End-to-end VMware Exit platform, owned across the full lifecycle — architecture, product direction, and implementation: concurrent batch migration engine, automated IaC generation (K8s/Helm/Terraform), a D3 topology map with VLAN visualization, and real-time SSE log streaming.',
+        approach: 'The Go migration engine and the IaC-generation layer are kept deliberately decoupled, so a failed migration batch can never corrupt the Helm/Terraform output already generated for the batches that succeeded.',
+        challenge: 'Real-time visibility was the hard part to get right: SSE log streaming plus a D3 topology map with VLAN visualization, so operators could watch a live migration in progress instead of tailing logs blind — that observability is what got it adopted company-wide instead of staying a personal tool.',
         stack: 'Go · React · Kubernetes · Terraform', metric: 'Full company-wide adoption as Indra\'s standard vSphere → Kubernetes migration tool' } },
 
     { id: 'harness', label: 'Harness Dashboard', kind: 'secondary', image: 'assets/icons/harness.svg',
       detail: { title: 'Harness Dashboard', teaser: 'Creator & maintainer — 2.3k+ installs on Open-VSX',
+        status: 'Open-source — actively maintained',
         body: 'VS Code/IDE extension for visualizing and developing AI architectures on a graphical whiteboard. Part of the open-source Harness SDD Framework — a spec-driven development template for structured AI-human collaboration.',
         stack: 'TypeScript', metric: '2.3k+ installs on Open-VSX',
         links: [
@@ -107,6 +114,7 @@ const GRAPH = {
 
     { id: 'framework', label: 'Harness SDD Framework', kind: 'secondary', image: 'assets/icons/framework.svg',
       detail: { title: 'Harness SDD Framework', teaser: 'The methodology this very portfolio was built with — and this is a live example of it',
+        status: 'Open-source — living methodology, used to build this site',
         body: 'An open-source template for structuring a repo so AI agents can work in it autonomously, traceably, and verifiably — combining four ideas: Harness Engineering (the repo IS the system — AGENTS.md, specs/, progress/ as shared memory instead of a person\'s head or a chat log), Spec-Driven Development (no code before requirements → design → tasks are written and approved), a Human-in-the-Loop gate (a human reviews and approves every spec before implementation starts — no exceptions, even when the agent disagrees), and Context Engineering (state lives on disk, not in the conversation — a new session reads one distilled file instead of re-deriving history from a growing transcript, which keeps inference cost flat instead of scaling with conversation length). It also standardizes on the emerging AGENTS.md convention for cross-CLI agent instructions, with subagents (harness/spec-author/implementer/reviewer), skills loaded via progressive disclosure, and lifecycle hooks — one manifest (`agentic.json`) rendered into whichever CLI is actually running (Claude Code, Gemini CLI, opencode). This site is a live example, not a demo: every round of feedback in this conversation became a spec update in `specs/portfolio-site/`, reviewed before I (the agent) touched the code — including a local/global steering pilot — `portfolio/` carries its own local guardrails on top of the project\'s global rules.',
         stack: 'Bash · JSON manifest · Python renderer',
         diagrams: [
@@ -122,7 +130,10 @@ const GRAPH = {
 
     { id: 'kiro', label: 'Kiro Task Manager', kind: 'secondary', image: 'assets/icons/kiro.svg',
       detail: { title: 'Kiro Task Manager', teaser: 'Built during an AWS-Spain Kiro workshop but went beyond',
+        status: 'Completed — workshop project, scope went beyond the brief',
         body: 'Kanban-style task management web app with a Spanish-language UI — three columns (Por Hacer / En Progreso / Completadas) plus a productivity analytics dashboard. Single-package monorepo (no separate bundler config); ships its own MCP server.',
+        approach: 'Kept to a single-package monorepo with no separate bundler config, to move fast under workshop time pressure — the productivity analytics dashboard and its own bundled MCP server went beyond what the workshop actually asked for.',
+        challenge: 'Shipping an MCP server alongside the app itself, inside workshop time constraints, meant learning the protocol hands-on rather than from docs — that experience now directly informs how I evaluate agent tooling at work.',
         stack: 'Bun · Elysia · React · Tailwind · SQLite' } },
 
     // Skill categories (secondary tier, under "Skills") — R9/F6 restructure, 2026-08-23:
