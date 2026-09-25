@@ -79,7 +79,8 @@ const GRAPH = {
         body: 'What I\'m actively reading right now to go deeper — a short, honest, in-progress list, not padded out for show.',
         booksList: [
           { name: 'AI Engineering', author: 'Chip Huyen', note: 'Currently reading — practical foundations for building real AI/LLM applications' },
-          { name: 'The Software Engineer\'s Guidebook', author: 'Gergely Orosz', note: 'Currently reading — navigating technical and career growth as a senior engineer' }
+          { name: 'The Software Engineer\'s Guidebook', author: 'Gergely Orosz', note: 'Currently reading — navigating technical and career growth as a senior engineer' },
+          { name: 'The Effective Software Engineer', author: 'Addy Osmani', note: 'Currently reading — practical strategies for becoming a more effective engineer' }
         ] } },
 
     { id: 'contact', label: 'Contact', kind: 'primary', image: 'assets/icons/contact.svg',
