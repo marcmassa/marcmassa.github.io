@@ -5,35 +5,47 @@
        > leaf/link. */
 const GRAPH = {
   nodes: [
-    { id: 'hub', label: 'Marc Massa Capó', kind: 'hub', image: 'assets/memoji.png',
-      detail: { title: 'Marc Massa Capó', teaser: 'Senior AI Automation Engineer',
-        body: 'Palma de Mallorca · Remote. Building the infrastructure that lets AI agents run in production, not just demos.' } },
+    {
+      id: 'hub', label: 'Marc Massa Capó', kind: 'hub', image: 'assets/memoji.png',
+      detail: {
+        title: 'Marc Massa Capó', teaser: 'Senior AI Automation Engineer',
+        body: 'Palma de Mallorca · Remote. Building the infrastructure that lets AI agents run in production, not just demos.'
+      }
+    },
 
-    { id: 'about', label: 'About', kind: 'primary', image: 'assets/icons/about.svg',
-      detail: { title: 'About', teaser: 'DevOps → AI Automation Engineer',
-        body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Automation engineer as part of a natural evolution from my previous experience. Hands-on production experience with microservices and monoliths, AI services like Gemini Enterprise and implementing CI/CD platforms, not just certifications.' } },
+    {
+      id: 'about', label: 'About', kind: 'primary', image: 'assets/icons/about.svg',
+      detail: {
+        title: 'About', teaser: 'DevOps → AI Automation Engineer',
+        body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Automation engineer as part of a natural evolution from my previous experience. Hands-on production experience with microservices and monoliths, AI services like Gemini Enterprise and implementing CI/CD platforms, not just certifications.'
+      }
+    },
 
-    { id: 'experience', label: 'Experience', kind: 'primary', image: 'assets/icons/experience.svg',
-      detail: { title: 'Experience', teaser: '7+ years — Appfire',
+    {
+      id: 'experience', label: 'Experience', kind: 'primary', image: 'assets/icons/experience.svg',
+      detail: {
+        title: 'Experience', teaser: '7+ years — Appfire',
         body: 'Career timeline, cloud infra and automation track record.',
         timeline: [
           {
             role: 'Senior AI Automation Engineer', company: 'Appfire · Palma (remote)', dates: 'Oct 2026 - Current',
             bullets: []
           },
-          { role: 'Senior DevOps Engineer', company: 'Indra · Palma (Remote)', dates: 'Feb 2023 – Oct 2026',
+          {
+            role: 'Senior DevOps Engineer', company: 'Indra · Palma (Remote)', dates: 'Feb 2023 – Oct 2026',
             bullets: [
               'CI/CD automation (Jenkins/GitLab) platform to deploy in cloud native or monoliths',
               'Created SecurIT and Hypermove (see Projects)',
               'Fixed the finOps improving reliability and increasing clients to the platform which went from negative to positive numbres.',
               'Mentoring new members to avoid siloing and improve the onboarding process'
-            ] 
+            ]
           },
-          { role: 'DevOps Engineer', company: 'RIU Hotels · Palma', dates: 'Jun 2021 – Feb 2023',
+          {
+            role: 'DevOps Engineer', company: 'RIU Hotels · Palma', dates: 'Jun 2021 – Feb 2023',
             bullets: [
               'OpenShift orchestration for containerizing critical services — +50% resilience',
               'Ansible + Jenkins automation — -25% human error'
-            ] 
+            ]
           },
           {
             role: 'Systems Operator', company: ' RIU Hotels · Palma', dates: 'Mar 2019 - Jun 2021',
@@ -44,102 +56,146 @@ const GRAPH = {
               'Implementing new servers for new openings until production ready'
             ]
           }
-        ] 
-      } 
+        ]
+      }
     },
 
-    { id: 'projects', label: 'Projects', kind: 'primary', image: 'assets/icons/projects.svg',
-      detail: { title: 'Projects', teaser: 'SecurIT, Hypermove, Harness Dashboard', body: 'Click a connected node to see each project in depth.' } },
+    {
+      id: 'projects', label: 'Projects', kind: 'primary', image: 'assets/icons/projects.svg',
+      detail: { title: 'Projects', teaser: 'SecurIT, Hypermove, Harness Dashboard', body: 'Click a connected node to see each project in depth.' }
+    },
 
-    { id: 'skills', label: 'Skills', kind: 'primary', image: 'assets/icons/skills.svg',
-      detail: { title: 'Skills', teaser: 'Stack across cloud, AI infra, and automation — plus how I actually work',
-        body: 'Real hands-on tools, not just certifications. Click a category to see the tools in it and how each one shows up in my day-to-day work.' } },
+    {
+      id: 'skills', label: 'Skills', kind: 'primary', image: 'assets/icons/skills.svg',
+      detail: {
+        title: 'Skills', teaser: 'Stack across cloud, AI infra, and automation — plus how I actually work',
+        body: 'Real hands-on tools, not just certifications. Click a category to see the tools in it and how each one shows up in my day-to-day work.'
+      }
+    },
 
-    { id: 'certifications', label: 'Certifications', kind: 'primary', image: 'assets/icons/certifications.svg',
-      detail: { title: 'Certifications', teaser: 'Google Skills (Gold League, both profiles) + infrastructure & AI foundations',
+    {
+      id: 'certifications', label: 'Certifications', kind: 'primary', image: 'assets/icons/certifications.svg',
+      detail: {
+        title: 'Certifications', teaser: 'Google Skills (Gold League, both profiles) + infrastructure & AI foundations',
         body: 'Education: Sys. Admin and Networking (ASIR), Sant Josep Obrer. Every badge below is real and dated — pulled directly from my two Google Skills profiles.',
         certGroups: [
-          { category: 'Gemini Enterprise Agent Platform — Governance & Security (2026)', items: [
-            'Govern Agent Access with Gemini Enterprise Agent Platform', 'Secure your Agents with Gemini Enterprise Agent Platform',
-            'Govern agents with Agent Gateway, Agent Registry, and Policies', 'Model Armor: Securing AI Deployments',
-            'Deploy Gemini Enterprise with Workspace Data Sources and Model Armor'
-          ] },
-          { category: 'Gemini Enterprise Agent Platform — Deployment & Search (2026)', items: [
-            'Improve Agent Search Results on Agent Platform', 'Agent Search UI configurations on Agent Platform',
-            'Deploy the Gemini Enterprise app to Transform Enterprises', 'Deploy Multi-Agent Systems with Gemini Enterprise Agent Platform',
-            'Plan Change Management for Gemini Enterprise Deployments', 'Add Agents to Gemini Enterprise',
-            'Accelerate Knowledge Exchange with Gemini Enterprise', 'Introduction to Gemini Enterprise',
-            'Create Your First Gemini Enterprise Application', 'Enterprise Agents and Use Cases'
-          ] },
-          { category: 'Agent Development Kit (ADK) & Agent Fundamentals (2026)', items: [
-            'Engineer AI Agents with Agent Development Kit (ADK)', 'Build Your First Agent with Agent Development Kit (ADK)',
-            'Build Agents with Agent Development Kit (ADK)', 'Agent Fundamentals', 'Introduction to AI Agents',
-            'Use a Third-Party Identity Provider with Workforce Identity Federation'
-          ] },
-          { category: 'Generative AI Foundations (2023)', items: [
-            'Introduction to Generative AI', 'Introduction to Large Language Models', 'Introduction to Responsible AI',
-            'Generative AI Fundamentals', 'Introduction to Vertex AI Studio', 'Introduction to Image Generation',
-            'Create Image Captioning Models', 'Transformer Models and BERT Model', 'Attention Mechanism', 'Encoder-Decoder Architecture'
-          ] },
-          { category: 'Gen AI: Navigate & Transform series (2026)', items: [
-            'Gen AI Agents: Transform Your Organization', 'Gen AI Apps: Transform Your Work',
-            'Gen AI: Navigate the Landscape', 'Gen AI: Unlock Foundational Concepts', 'Gen AI: Beyond the Chatbot'
-          ] },
-          { category: 'Infrastructure & Networking', items: [
-            'Implementing Cloud Load Balancing for Compute Engine', 'RHCSA (Red Hat Certified)', 'CCNA (Cisco Networking)',
-            'K8s for IT Admin (LinkedIn)', 'Snyk Security for Devs', 'Security Monitoring'
-          ] },
-          { category: 'AI Foundations (external)', items: [
-            'CS50 AI with Python — Harvard/edX (2026)', 'Orchestrating Workflows for GenAI — DeepLearning.AI',
-            'Claude Code: Agentic Coding — DeepLearning.AI'
-          ] }
+          {
+            category: 'Gemini Enterprise Agent Platform — Governance & Security (2026)', items: [
+              'Govern Agent Access with Gemini Enterprise Agent Platform', 'Secure your Agents with Gemini Enterprise Agent Platform',
+              'Govern agents with Agent Gateway, Agent Registry, and Policies', 'Model Armor: Securing AI Deployments',
+              'Deploy Gemini Enterprise with Workspace Data Sources and Model Armor'
+            ]
+          },
+          {
+            category: 'Gemini Enterprise Agent Platform — Deployment & Search (2026)', items: [
+              'Improve Agent Search Results on Agent Platform', 'Agent Search UI configurations on Agent Platform',
+              'Deploy the Gemini Enterprise app to Transform Enterprises', 'Deploy Multi-Agent Systems with Gemini Enterprise Agent Platform',
+              'Plan Change Management for Gemini Enterprise Deployments', 'Add Agents to Gemini Enterprise',
+              'Accelerate Knowledge Exchange with Gemini Enterprise', 'Introduction to Gemini Enterprise',
+              'Create Your First Gemini Enterprise Application', 'Enterprise Agents and Use Cases'
+            ]
+          },
+          {
+            category: 'Agent Development Kit (ADK) & Agent Fundamentals (2026)', items: [
+              'Engineer AI Agents with Agent Development Kit (ADK)', 'Build Your First Agent with Agent Development Kit (ADK)',
+              'Build Agents with Agent Development Kit (ADK)', 'Agent Fundamentals', 'Introduction to AI Agents',
+              'Use a Third-Party Identity Provider with Workforce Identity Federation'
+            ]
+          },
+          {
+            category: 'Generative AI Foundations (2023)', items: [
+              'Introduction to Generative AI', 'Introduction to Large Language Models', 'Introduction to Responsible AI',
+              'Generative AI Fundamentals', 'Introduction to Vertex AI Studio', 'Introduction to Image Generation',
+              'Create Image Captioning Models', 'Transformer Models and BERT Model', 'Attention Mechanism', 'Encoder-Decoder Architecture'
+            ]
+          },
+          {
+            category: 'Gen AI: Navigate & Transform series (2026)', items: [
+              'Gen AI Agents: Transform Your Organization', 'Gen AI Apps: Transform Your Work',
+              'Gen AI: Navigate the Landscape', 'Gen AI: Unlock Foundational Concepts', 'Gen AI: Beyond the Chatbot'
+            ]
+          },
+          {
+            category: 'Infrastructure & Networking', items: [
+              'Implementing Cloud Load Balancing for Compute Engine', 'RHCSA (Red Hat Certified)', 'CCNA (Cisco Networking)',
+              'K8s for IT Admin (LinkedIn)', 'Snyk Security for Devs', 'Security Monitoring'
+            ]
+          },
+          {
+            category: 'AI Foundations (external)', items: [
+              'CS50 AI with Python — Harvard/edX (2026)', 'Orchestrating Workflows for GenAI — DeepLearning.AI',
+              'Claude Code: Agentic Coding — DeepLearning.AI'
+            ]
+          }
         ],
         links: [
           { label: 'Google Skills — work profile (Gold League)', url: 'https://partner.skills.google/public_profiles/233d475a-59ee-4c93-946f-c3b893ae5375' },
           { label: 'Google Skills — personal profile (Gold League)', url: 'https://www.skills.google/public_profiles/38b79667-4fb6-4ebc-aa2c-49376698ba1a' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'books', label: 'Books', kind: 'primary', image: 'assets/icons/books.svg',
-      detail: { title: 'Books', teaser: 'Currently reading — an ongoing list, not a finished one',
+    {
+      id: 'books', label: 'Books', kind: 'primary', image: 'assets/icons/books.svg',
+      detail: {
+        title: 'Books', teaser: 'Currently reading — an ongoing list, not a finished one',
         body: 'What I\'m actively reading right now to go deeper — a short, honest, in-progress list, not padded out for show.',
         booksList: [
           { name: 'AI Engineering', author: 'Chip Huyen', note: 'Currently reading — practical foundations for building real AI/LLM applications' },
           { name: 'The Software Engineer\'s Guidebook', author: 'Gergely Orosz', note: 'Currently reading — navigating technical and career growth as a senior engineer' },
           { name: 'The Effective Software Engineer', author: 'Addy Osmani', note: 'Currently reading — practical strategies for becoming a more effective engineer' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'contact', label: 'Contact', kind: 'primary', image: 'assets/icons/contact.svg',
-      detail: { title: 'Contact', teaser: 'GitHub, Ko-fi, LinkedIn', body: 'Connected nodes open directly — no detail panel for pure links.' } },
+    {
+      id: 'contact', label: 'Contact', kind: 'primary', image: 'assets/icons/contact.svg',
+      detail: { title: 'Contact', teaser: 'GitHub, Ko-fi, LinkedIn', body: 'Connected nodes open directly — no detail panel for pure links.' }
+    },
 
     // Projects (secondary tier, under "Projects")
-    { id: 'securit', label: 'SecurIT', kind: 'secondary', flagship: true, image: 'assets/icons/securit.svg',
-      detail: { title: 'SecurIT', teaser: 'Sole developer, end-to-end — adopted across 30+ teams at Indra',
+    {
+      id: 'securit', label: 'SecurIT', kind: 'secondary', flagship: true, image: 'assets/icons/securit.svg',
+      detail: {
+        title: 'SecurIT', teaser: 'Sole developer, end-to-end — adopted across 30+ teams at Indra',
         status: 'Production — actively maintained, sole developer',
         body: 'Kubernetes-native DevSecOps compliance platform centralizing every analysis and test result of a product — SonarQube, Trivy, SBOM (CycloneDX/SPDX), Dependency-Check — into a single place. AI-powered (Google ADK/Gemini) license mitigation.',
         approach: 'Each scanner writes into a common schema in PostgreSQL, so one dashboard reasons over SAST, SCA, and SBOM data without re-implementing any of the underlying tools. The AI licensing-mitigation layer runs as a bounded advisory step, not an autonomous approver — every suggestion is reviewed by a human before it reaches a merge.',
         challenge: 'Getting 30+ teams to trust one source of truth meant the schema had to survive scanner version drift without breaking dashboards — solved by normalizing each tool\'s raw output into a stable internal format at ingestion time, so upstream tool changes never leak into the UI.',
-        stack: 'Python · TypeScript · React · PostgreSQL · Kubernetes', metric: 'Adopted across 30+ product teams at Indra — review cycles cut from days to hours' } },
+        stack: 'Python · TypeScript · React · PostgreSQL · Kubernetes', metric: 'Adopted across 30+ product teams at Indra — review cycles cut from days to hours'
+      }
+    },
 
-    { id: 'hypermove', label: 'Hypermove', kind: 'secondary', image: 'assets/icons/hypermove.svg',
-      detail: { title: 'Hypermove', teaser: 'Developer, Product Owner & architect — VMware Exit migration solution',
+    {
+      id: 'hypermove', label: 'Hypermove', kind: 'secondary', image: 'assets/icons/hypermove.svg',
+      detail: {
+        title: 'Hypermove', teaser: 'Developer, Product Owner & architect — VMware Exit migration solution',
         status: 'Production — company-wide standard tool',
         body: 'End-to-end VMware Exit platform, owned across the full lifecycle — architecture, product direction, and implementation: concurrent batch migration engine, automated IaC generation (K8s/Helm/Terraform), a D3 topology map with VLAN visualization, and real-time SSE log streaming.',
         approach: 'The Go migration engine and the IaC-generation layer are kept deliberately decoupled, so a failed migration batch can never corrupt the Helm/Terraform output already generated for the batches that succeeded.',
         challenge: 'Real-time visibility was the hard part to get right: SSE log streaming plus a D3 topology map with VLAN visualization, so operators could watch a live migration in progress instead of tailing logs blind — that observability is what got it adopted company-wide instead of staying a personal tool.',
-        stack: 'Go · React · Kubernetes · Terraform', metric: 'Full company-wide adoption as Indra\'s standard vSphere → Kubernetes migration tool' } },
+        stack: 'Go · React · Kubernetes · Terraform', metric: 'Full company-wide adoption as Indra\'s standard vSphere → Kubernetes migration tool'
+      }
+    },
 
-    { id: 'harness', label: 'Harness Dashboard', kind: 'secondary', image: 'assets/icons/harness.svg',
-      detail: { title: 'Harness Dashboard', teaser: 'Creator & maintainer — 2.3k+ installs on Open-VSX',
+    {
+      id: 'harness', label: 'Harness Dashboard', kind: 'secondary', image: 'assets/icons/harness.svg',
+      detail: {
+        title: 'Harness Dashboard', teaser: 'Creator & maintainer — 2.3k+ installs on Open-VSX',
         status: 'Open-source — actively maintained',
         body: 'VS Code/IDE extension for visualizing and developing AI architectures on a graphical whiteboard. Part of the open-source Harness SDD Framework — a spec-driven development template for structured AI-human collaboration.',
         stack: 'TypeScript', metric: '2.3k+ installs on Open-VSX',
         links: [
           { label: 'View on Open-VSX', url: 'https://open-vsx.org/extension/marcmassacapo/harness-dashboard-vscode' },
           { label: 'Source on GitHub', url: 'https://github.com/marcmassa/harness-manager' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'framework', label: 'Harness SDD Framework', kind: 'secondary', image: 'assets/icons/framework.svg',
-      detail: { title: 'Harness SDD Framework', teaser: 'The methodology this very portfolio was built with — and this is a live example of it',
+    {
+      id: 'framework', label: 'Harness SDD Framework', kind: 'secondary', image: 'assets/icons/framework.svg',
+      detail: {
+        title: 'Harness SDD Framework', teaser: 'The methodology this very portfolio was built with — and this is a live example of it',
         status: 'Open-source — living methodology, used to build this site',
         body: 'An open-source template for structuring a repo so AI agents can work in it autonomously, traceably, and verifiably — combining four ideas: Harness Engineering (the repo IS the system — AGENTS.md, specs/, progress/ as shared memory instead of a person\'s head or a chat log), Spec-Driven Development (no code before requirements → design → tasks are written and approved), a Human-in-the-Loop gate (a human reviews and approves every spec before implementation starts — no exceptions, even when the agent disagrees), and Context Engineering (state lives on disk, not in the conversation — a new session reads one distilled file instead of re-deriving history from a growing transcript, which keeps inference cost flat instead of scaling with conversation length). It also standardizes on the emerging AGENTS.md convention for cross-CLI agent instructions, with subagents (harness/spec-author/implementer/reviewer), skills loaded via progressive disclosure, and lifecycle hooks — one manifest (`agentic.json`) rendered into whichever CLI is actually running (Claude Code, Gemini CLI, opencode). This site is a live example, not a demo: every round of feedback in this conversation became a spec update in `specs/portfolio-site/`, reviewed before I (the agent) touched the code — including a local/global steering pilot — `portfolio/` carries its own local guardrails on top of the project\'s global rules.',
         stack: 'Bash · JSON manifest · Python renderer',
@@ -152,20 +208,28 @@ const GRAPH = {
         ],
         links: [
           { label: 'Harness Dashboard (companion VS Code extension)', url: 'https://open-vsx.org/extension/marcmassacapo/harness-dashboard-vscode' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'kiro', label: 'Kiro Task Manager', kind: 'secondary', image: 'assets/icons/kiro.svg',
-      detail: { title: 'Kiro Task Manager', teaser: 'Built during an AWS-Spain Kiro workshop but went beyond',
+    {
+      id: 'kiro', label: 'Kiro Task Manager', kind: 'secondary', image: 'assets/icons/kiro.svg',
+      detail: {
+        title: 'Kiro Task Manager', teaser: 'Built during an AWS-Spain Kiro workshop but went beyond',
         status: 'Completed — workshop project, scope went beyond the brief',
         body: 'Kanban-style task management web app with a Spanish-language UI — three columns (Por Hacer / En Progreso / Completadas) plus a productivity analytics dashboard. Single-package monorepo (no separate bundler config); ships its own MCP server.',
         approach: 'Kept to a single-package monorepo with no separate bundler config, to move fast under workshop time pressure — the productivity analytics dashboard and its own bundled MCP server went beyond what the workshop actually asked for.',
         challenge: 'Shipping an MCP server alongside the app itself, inside workshop time constraints, meant learning the protocol hands-on rather than from docs — that experience now directly informs how I evaluate agent tooling at work.',
-        stack: 'Bun · Elysia · React · Tailwind · SQLite' } },
+        stack: 'Bun · Elysia · React · Tailwind · SQLite'
+      }
+    },
 
     // Skill categories (secondary tier, under "Skills") — R9/F6 restructure, 2026-08-23:
     // was skills → skill (30+ leaves crowding one node), now skills → category → skill.
-    { id: 'cat-cloud-ai', label: 'Cloud & AI Platforms', kind: 'secondary', image: 'assets/icons/cat-cloud.svg',
-      detail: { title: 'Cloud & AI Platforms', teaser: 'Where the infrastructure and the AI stack meet',
+    {
+      id: 'cat-cloud-ai', label: 'Cloud & AI Platforms', kind: 'secondary', image: 'assets/icons/cat-cloud.svg',
+      detail: {
+        title: 'Cloud & AI Platforms', teaser: 'Where the infrastructure and the AI stack meet',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'GCP', note: 'By far my primary cloud — Compute Engine, Cloud SQL, Load Balancing, Cloud Run, GKE, and IaC-managed infrastructure end to end' },
@@ -173,57 +237,81 @@ const GRAPH = {
           { name: 'Gemini Enterprise Agent Platform', note: 'AI platform work — model serving & agent orchestration (Vertex AI\'s current branding post Cloud Next 2026)' },
           { name: 'Azure', note: 'Cloud infrastructure and services on Microsoft Azure' },
           { name: 'OpenShift', note: 'Enterprise Kubernetes — used at RIU Hotels to containerize critical services (+50% resilience)' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-ai-agents', label: 'AI Coding Agents & CLIs', kind: 'secondary', image: 'assets/icons/agent-cli.svg',
-      detail: { title: 'AI Coding Agents & CLIs', teaser: 'Hands-on, not just aware of them',
+    {
+      id: 'cat-ai-agents', label: 'AI Coding Agents & CLIs', kind: 'secondary', image: 'assets/icons/agent-cli.svg',
+      detail: {
+        title: 'AI Coding Agents & CLIs', teaser: 'Hands-on, not just aware of them',
         body: 'The tools I actually drive day to day — this portfolio itself is proof of the first one.',
         skillsList: [
           { name: 'Claude Code', note: 'Built this portfolio\'s interactive graph and its Harness SDD framework tooling end-to-end' },
           { name: 'GitHub Copilot', note: 'Daily coding assistant across projects' },
           { name: 'Gemini CLI', note: 'One of the CLIs the Harness SDD Framework renders adapters for — used hands-on, not just supported' },
           { name: 'Kiro CLI', note: 'Used at the AWS-Spain workshop that produced Kiro Task Manager' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-automation', label: 'Automation & Agentic AI', kind: 'secondary', image: 'assets/icons/cat-automation.svg',
-      detail: { title: 'Automation & Agentic AI', teaser: 'From deterministic pipelines to agent-assisted flows',
+    {
+      id: 'cat-automation', label: 'Automation & Agentic AI', kind: 'secondary', image: 'assets/icons/cat-automation.svg',
+      detail: {
+        title: 'Automation & Agentic AI', teaser: 'From deterministic pipelines to agent-assisted flows',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'n8n', note: 'Workflow automation, from deterministic pipelines to agent-assisted flows' },
           { name: 'MCP', note: 'Connecting agent workflows to real tools and data via the Model Context Protocol' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-containers-iac', label: 'Container Orchestration & IaC', kind: 'secondary', image: 'assets/icons/cat-containers.svg',
-      detail: { title: 'Container Orchestration & IaC', teaser: 'Declarative infra, GitOps-delivered',
+    {
+      id: 'cat-containers-iac', label: 'Container Orchestration & IaC', kind: 'secondary', image: 'assets/icons/cat-containers.svg',
+      detail: {
+        title: 'Container Orchestration & IaC', teaser: 'Declarative infra, GitOps-delivered',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'Kubernetes', note: 'Container orchestration across cloud and on-prem environments' },
           { name: 'Terraform', note: 'Infrastructure as code for reproducible cloud provisioning' },
           { name: 'Argo CD', note: 'GitOps continuous delivery for Kubernetes, paired with Terraform for declarative infra' },
           { name: 'GitOps', note: 'Git as the single source of truth for infra and config state' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-cicd', label: 'CI/CD & Version Control', kind: 'secondary', image: 'assets/icons/cat-cicd.svg',
-      detail: { title: 'CI/CD & Version Control', teaser: 'Pipeline automation across every project',
+    {
+      id: 'cat-cicd', label: 'CI/CD & Version Control', kind: 'secondary', image: 'assets/icons/cat-cicd.svg',
+      detail: {
+        title: 'CI/CD & Version Control', teaser: 'Pipeline automation across every project',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'Jenkins', note: 'Pipeline automation — helped cut GCP Cloud Run costs 30% at Indra' },
           { name: 'GitLab CI', note: 'Pipeline automation across Indra projects, alongside Jenkins' },
           { name: 'GitHub Actions', note: 'CI/CD for open-source projects, including Harness Dashboard' },
           { name: 'Azure DevOps', note: 'Pipelines and work-item tracking on Microsoft\'s DevOps suite' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-languages', label: 'Languages', kind: 'secondary', image: 'assets/icons/cat-languages.svg',
-      detail: { title: 'Languages', teaser: 'What I actually shipped each one in',
+    {
+      id: 'cat-languages', label: 'Languages', kind: 'secondary', image: 'assets/icons/cat-languages.svg',
+      detail: {
+        title: 'Languages', teaser: 'What I actually shipped each one in',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'Python', note: 'SecurIT\'s backend and automation tooling' },
           { name: 'TypeScript', note: 'SecurIT frontend and the Harness Dashboard extension' },
           { name: 'Go', note: 'Hypermove\'s migration engine and backend services' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-ticketing', label: 'Ticketing & Task Management', kind: 'secondary', image: 'assets/icons/cat-ticketing.svg',
-      detail: { title: 'Ticketing & Task Management', teaser: 'Tools and methodology, day to day',
+    {
+      id: 'cat-ticketing', label: 'Ticketing & Task Management', kind: 'secondary', image: 'assets/icons/cat-ticketing.svg',
+      detail: {
+        title: 'Ticketing & Task Management', teaser: 'Tools and methodology, day to day',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'Jira', note: 'Daily ticketing and workflow tracking across teams' },
@@ -231,17 +319,23 @@ const GRAPH = {
           { name: 'OpenProject', note: 'Project management and planning' },
           { name: 'ITIL', note: 'Working within ITIL-aligned service management practices' },
           { name: 'Agile / Kanban', note: 'Day-to-day delivery workflow across teams' }
-        ] } },
+        ]
+      }
+    },
 
-    { id: 'cat-soft-skills', label: 'Soft Skills', kind: 'secondary', image: 'assets/icons/cat-soft.svg',
-      detail: { title: 'Soft Skills', teaser: 'How I actually work with people, not just tools',
+    {
+      id: 'cat-soft-skills', label: 'Soft Skills', kind: 'secondary', image: 'assets/icons/cat-soft.svg',
+      detail: {
+        title: 'Soft Skills', teaser: 'How I actually work with people, not just tools',
         body: 'Click a connected node for how each one shows up in my work.',
         skillsList: [
           { name: 'Ownership', note: 'Taking a project from architecture to production alone and owning the outcome (SecurIT, Hypermove)' },
           { name: 'Cross-team collaboration', note: 'Partnering across DevOps, business development, and client-facing teams to land shared wins' },
           { name: 'Build-vs-buy judgment', note: 'Evaluating market alternatives honestly before deciding to build in-house (SecurIT)' },
           { name: 'Technical documentation', note: 'Structuring collaboration between humans and AI agents (Harness SDD Framework)' }
-        ] } },
+        ]
+      }
+    },
 
     // Skill leaves — Cloud & AI Platforms
     { id: 'skill-gcp', label: 'GCP', kind: 'leaf', parent: 'cat-cloud-ai' },
