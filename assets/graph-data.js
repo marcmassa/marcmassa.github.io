@@ -11,15 +11,25 @@ const GRAPH = {
 
     { id: 'about', label: 'About', kind: 'primary', image: 'assets/icons/about.svg',
       detail: { title: 'About', teaser: 'DevOps → AI Automation Engineer',
-        body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Automation engineer. Hands-on production experience with microservices and monoliths, AI services like Gemini Enterprise and implementing CI/CD platforms, not just certifications.' } },
+        body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Automation engineer as part of a natural evolution from my previous experience. Hands-on production experience with microservices and monoliths, AI services like Gemini Enterprise and implementing CI/CD platforms, not just certifications.' } },
 
     { id: 'experience', label: 'Experience', kind: 'primary', image: 'assets/icons/experience.svg',
       detail: { title: 'Experience', teaser: '5+ years — Indra (current) → RIU Hotels',
         body: 'Career timeline, cloud infra and automation track record.',
         timeline: [
-          { role: 'Senior DevOps Engineer', company: 'Indra · Palma de Mallorca (Remote)', dates: 'Feb 2023 – Present',
-            bullets: ['CI/CD automation (Jenkins/GitLab) for GCP Cloud Run — 30% cost reduction', 'Created SecurIT and Hypermove (see Projects)'] },
-          { role: 'DevOps Engineer', company: 'RIU Hotels · Palma de Mallorca', dates: 'Jun 2021 – Feb 2023',
+          {
+            role: 'Senior AI Automation Engineer', company: 'Appfire · Palma (remote)', dates: 'Oct 2026 - Current',
+            bullets: []
+          },
+          { role: 'Senior DevOps Engineer', company: 'Indra · Palma (Remote)', dates: 'Feb 2023 – Oct 2026',
+            bullets: [
+              'CI/CD automation (Jenkins/GitLab) platform to deploy in cloud native or monoliths',
+              'Created SecurIT and Hypermove (see Projects)',
+              'Fixed the finOps improving reliability and increasing clients to the platform which went from negative to positive numbres.',
+              'Mentoring new members to avoid siloing and improve the onboarding process'
+            ] 
+          },
+          { role: 'DevOps Engineer', company: 'RIU Hotels · Palma', dates: 'Jun 2021 – Feb 2023',
             bullets: ['OpenShift orchestration for containerizing critical services — +50% resilience', 'Ansible + Jenkins automation — -25% human error'] }
         ] } },
 
