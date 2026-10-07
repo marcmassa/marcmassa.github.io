@@ -40,6 +40,7 @@ const GRAPH = {
             bullets: [
               'Deploy monitoring and reducing time-to-response in SLA',
               'Automating manual daily tasks',
+              'Deploying new versions to production',
               'Implementing new servers for new openings until production ready'
             ]
           }
