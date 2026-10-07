@@ -14,7 +14,7 @@ const GRAPH = {
         body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Automation engineer as part of a natural evolution from my previous experience. Hands-on production experience with microservices and monoliths, AI services like Gemini Enterprise and implementing CI/CD platforms, not just certifications.' } },
 
     { id: 'experience', label: 'Experience', kind: 'primary', image: 'assets/icons/experience.svg',
-      detail: { title: 'Experience', teaser: '5+ years — Indra (current) → RIU Hotels',
+      detail: { title: 'Experience', teaser: '7+ years — Appfire',
         body: 'Career timeline, cloud infra and automation track record.',
         timeline: [
           {
@@ -30,8 +30,22 @@ const GRAPH = {
             ] 
           },
           { role: 'DevOps Engineer', company: 'RIU Hotels · Palma', dates: 'Jun 2021 – Feb 2023',
-            bullets: ['OpenShift orchestration for containerizing critical services — +50% resilience', 'Ansible + Jenkins automation — -25% human error'] }
-        ] } },
+            bullets: [
+              'OpenShift orchestration for containerizing critical services — +50% resilience',
+              'Ansible + Jenkins automation — -25% human error'
+            ] 
+          },
+          {
+            role: 'Systems Operator', company: ' RIU Hotels · Palma', dates: 'Mar 2019 - Jun 2021',
+            bullets: [
+              'Deploy monitoring and reducing time-to-response in SLA',
+              'Automating manual daily tasks',
+              'Implementing new servers for new openings until production ready'
+            ]
+          }
+        ] 
+      } 
+    },
 
     { id: 'projects', label: 'Projects', kind: 'primary', image: 'assets/icons/projects.svg',
       detail: { title: 'Projects', teaser: 'SecurIT, Hypermove, Harness Dashboard', body: 'Click a connected node to see each project in depth.' } },
