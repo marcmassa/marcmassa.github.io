@@ -6,12 +6,12 @@
 const GRAPH = {
   nodes: [
     { id: 'hub', label: 'Marc Massa Capó', kind: 'hub', image: 'assets/memoji.png',
-      detail: { title: 'Marc Massa Capó', teaser: 'DevOps Engineer → AI Platform & Agent Systems Architect',
+      detail: { title: 'Marc Massa Capó', teaser: 'Senior AI Automation Engineer',
         body: 'Palma de Mallorca · Remote. Building the infrastructure that lets AI agents run in production, not just demos.' } },
 
     { id: 'about', label: 'About', kind: 'primary', image: 'assets/icons/about.svg',
-      detail: { title: 'About', teaser: 'DevOps → AI Platform & Agent Systems Architect',
-        body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Platform & Agent Systems Architecture. Hands-on production experience with GKE, Vertex AI, and Gemini Enterprise, not just certifications.' } },
+      detail: { title: 'About', teaser: 'DevOps → AI Automation Engineer',
+        body: '5+ years in cloud infrastructure and automation. Senior DevOps & Platform Engineer specializing in Multi-Agent Systems, LLM security, and GenAI platform engineering — now deliberately transitioning toward AI Automation engineer. Hands-on production experience with microservices and monoliths, AI services like Gemini Enterprise and implementing CI/CD platforms, not just certifications.' } },
 
     { id: 'experience', label: 'Experience', kind: 'primary', image: 'assets/icons/experience.svg',
       detail: { title: 'Experience', teaser: '5+ years — Indra (current) → RIU Hotels',
