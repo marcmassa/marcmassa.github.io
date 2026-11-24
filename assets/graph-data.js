@@ -143,7 +143,8 @@ const GRAPH = {
         booksList: [
           { name: 'AI Engineering', author: 'Chip Huyen', note: 'Currently reading — practical foundations for building real AI/LLM applications' },
           { name: 'The Software Engineer\'s Guidebook', author: 'Gergely Orosz', note: 'Currently reading — navigating technical and career growth as a senior engineer' },
-          { name: 'The Effective Software Engineer', author: 'Addy Osmani', note: 'Currently reading — practical strategies for becoming a more effective engineer' }
+          { name: 'The Effective Software Engineer', author: 'Addy Osmani', note: 'Finished — practical strategies for becoming a more effective engineer' },
+          { name: 'Designing Machine Learning Systems', author: 'Chip Huyen', note: 'Currently reading — practical foundations for building real AI/LLM applications' }
         ]
       }
     },
@@ -163,6 +164,18 @@ const GRAPH = {
         approach: 'Each scanner writes into a common schema in PostgreSQL, so one dashboard reasons over SAST, SCA, and SBOM data without re-implementing any of the underlying tools. The AI licensing-mitigation layer runs as a bounded advisory step, not an autonomous approver — every suggestion is reviewed by a human before it reaches a merge.',
         challenge: 'Getting 30+ teams to trust one source of truth meant the schema had to survive scanner version drift without breaking dashboards — solved by normalizing each tool\'s raw output into a stable internal format at ingestion time, so upstream tool changes never leak into the UI.',
         stack: 'Python · TypeScript · React · PostgreSQL · Kubernetes', metric: 'Adopted across 30+ product teams at Indra — review cycles cut from days to hours'
+      }
+    },
+    
+    {
+      id: 'talayot', label: 'Talayot', kind: 'secondary', flagship: true, image: 'assets/icons/talayot.svg',
+      detail: {
+        title: 'Talayot', teaser: 'Personal project — SecurIT\'s successor, rebuilt as a self-hosted product',
+        status: 'v2.0.0 released — actively developed, sole developer',
+        body: 'Self-hosted platform that turns the security reports a team already produces — SBOM (CycloneDX/SPDX), Trivy, Grype, SonarQube, SARIF, Dependency-Check — into the evidence behind each software release: what was analysed, who decided what and why, and a frozen, hashed package to hand to the customer.',
+        approach: 'Reports are recognised by their content, not their file name, and normalised into one findings model in PostgreSQL. Every finding is closed by a recorded decision — reason, author, expiry — rather than a status flag. A release freezes all of it into an evidence package: the findings, an SBOM, an OpenVEX document and the original reports, each with its SHA-256.',
+        challenge: 'Evidence only counts if it cannot drift after the fact. A frozen release is immutable, anything discovered later is reported alongside it instead of rewriting it, and uploads are strictly allow-listed — a field the schema does not know is rejected with its exact path, not silently stored.',
+        stack: 'Python · Flask · TypeScript · PostgreSQL · Redis · Docker · Kubernetes', metric: 'Reads 10+ report formats · 7,600+ backend and 2,300+ frontend tests behind a single gate · read-only public demo: https://talayot.eu'
       }
     },
 
