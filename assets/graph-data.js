@@ -62,7 +62,7 @@ const GRAPH = {
 
     {
       id: 'projects', label: 'Projects', kind: 'primary', image: 'assets/icons/projects.svg',
-      detail: { title: 'Projects', teaser: 'SecurIT, Hypermove, Harness Dashboard', body: 'Click a connected node to see each project in depth.' }
+      detail: { title: 'Projects', teaser: 'SecurIT, Talayot, Hypermove, Harness Dashboard', body: 'Click a connected node to see each project in depth.' }
     },
 
     {
@@ -156,7 +156,7 @@ const GRAPH = {
 
     // Projects (secondary tier, under "Projects")
     {
-      id: 'securit', label: 'SecurIT', kind: 'secondary', flagship: true, image: 'assets/icons/securit.svg',
+      id: 'securit', label: 'SecurIT', kind: 'secondary', image: 'assets/icons/securit.svg',
       detail: {
         title: 'SecurIT', teaser: 'Sole developer, end-to-end — adopted across 30+ teams at Indra',
         status: 'Production — actively maintained, sole developer',
@@ -168,14 +168,14 @@ const GRAPH = {
     },
     
     {
-      id: 'talayot', label: 'Talayot', kind: 'secondary', flagship: true, image: 'assets/icons/talayot.svg',
+      id: 'talayot', label: 'Talayot', kind: 'secondary', flagship: true, image: 'assets/icons/talayot-mark-small.svg',
       detail: {
         title: 'Talayot', teaser: 'Personal project — SecurIT\'s successor, rebuilt as a self-hosted product',
         status: 'v2.0.0 released — actively developed, sole developer',
-        body: 'Self-hosted platform that turns the security reports a team already produces — SBOM (CycloneDX/SPDX), Trivy, Grype, SonarQube, SARIF, Dependency-Check — into the evidence behind each software release: what was analysed, who decided what and why, and a frozen, hashed package to hand to the customer.',
+        body: 'Self-hosted platform that turns the security reports a team already produces: https://talayot.eu — SBOM (CycloneDX/SPDX), Trivy, Grype, SonarQube, SARIF, Dependency-Check — into the evidence behind each software release: what was analysed, who decided what and why, and a frozen, hashed package to hand to the customer.',
         approach: 'Reports are recognised by their content, not their file name, and normalised into one findings model in PostgreSQL. Every finding is closed by a recorded decision — reason, author, expiry — rather than a status flag. A release freezes all of it into an evidence package: the findings, an SBOM, an OpenVEX document and the original reports, each with its SHA-256.',
         challenge: 'Evidence only counts if it cannot drift after the fact. A frozen release is immutable, anything discovered later is reported alongside it instead of rewriting it, and uploads are strictly allow-listed — a field the schema does not know is rejected with its exact path, not silently stored.',
-        stack: 'Python · Flask · TypeScript · PostgreSQL · Redis · Docker · Kubernetes', metric: 'Reads 10+ report formats · 7,600+ backend and 2,300+ frontend tests behind a single gate · read-only public demo: https://talayot.eu'
+        stack: 'Python · Flask · TypeScript · PostgreSQL · Redis · Docker · Kubernetes', metric: 'Reads 10+ report formats · 7,600+ backend and 2,300+ frontend tests behind a single gate · read-only public demo'
       }
     },
 
@@ -412,6 +412,7 @@ const GRAPH = {
     { source: 'hub', target: 'contact' },
 
     { source: 'projects', target: 'securit' },
+    { source: 'projects', target: 'talayot' },
     { source: 'projects', target: 'hypermove' },
     { source: 'projects', target: 'harness' },
     { source: 'projects', target: 'kiro' },
